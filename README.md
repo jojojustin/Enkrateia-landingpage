@@ -133,3 +133,4 @@ Next additions before launch:
 - `terms.html` contains placeholder text for governing state/jurisdiction — update with your actual state before launch.
 - The privacy policy email addresses (`privacy@enkrateia.app`, `support@enkrateia.app`) need working inboxes before the app goes live.
 - The privacy policy effective date is April 26, 2026 — update if you materially revise it before launch.
+# Enkrateia-landingpage
