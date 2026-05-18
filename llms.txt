@@ -1,0 +1,12 @@
+# Enkrateia
+
+Official website for Enkrateia, an iOS-first 90-day program to reduce compulsive social media use with phase-gated blocking and daily accountability.
+
+## Canonical URLs
+- https://enkrateiaonline.com/
+- https://enkrateiaonline.com/privacy.html
+- https://enkrateiaonline.com/terms.html
+
+## Contact
+- support@enkrateia.app
+- privacy@enkrateia.app
