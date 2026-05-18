@@ -791,6 +791,7 @@
       </svg>
       You're on the list. One email at launch.
     </div>
+    <p id="wl1-msg" style="display:none;margin-top:10px;font-size:12px;color:#FFB040;"></p>
     <p class="hero-meta">Free to download · Lifetime access available · iOS only</p>
 
     <!-- Phase strip -->
@@ -1025,6 +1026,7 @@
       </svg>
       You're on the list. One email at launch.
     </div>
+    <p id="wl2-msg" style="display:none;margin-top:10px;font-size:12px;color:#FFB040;text-align:center;"></p>
   </div>
 </section>
 
@@ -1057,7 +1059,6 @@
     gaMeasurementId: '',
   };
   const ANALYTICS_CONSENT_KEY = 'enkrateia_analytics_consent_v1';
-  const FORM_RENDERED_AT = Date.now();
 
   /* Nav ink on scroll */
   const nav = document.getElementById('nav');
@@ -1102,19 +1103,26 @@
   });
 
   /* Waitlist handler */
-  function bind(formId, emailId, okId, honeypotId) {
+  function bind(formId, emailId, okId, honeypotId, messageId) {
     const form  = document.getElementById(formId);
     const email = document.getElementById(emailId);
     const ok    = document.getElementById(okId);
     const honeypot = document.getElementById(honeypotId);
+    const msg = document.getElementById(messageId);
     if (!form) return;
     form.addEventListener('submit', e => {
       e.preventDefault();
+      if (msg) { msg.style.display = 'none'; msg.textContent = ''; }
       const v = email.value.trim();
       if (!v || !v.includes('@')) {
         email.focus();
         email.style.borderColor = '#FF6060';
         email.style.boxShadow   = '0 0 0 3px rgba(255,96,96,.14)';
+        if (msg) {
+          msg.textContent = 'Please enter a valid email.';
+          msg.style.color = '#FF6060';
+          msg.style.display = 'block';
+        }
         setTimeout(() => { email.style.borderColor = ''; email.style.boxShadow = ''; }, 1800);
         return;
       }
@@ -1124,6 +1132,8 @@
         return;
       }
 
+      const submitButton = form.querySelector('button[type="submit"]');
+      if (submitButton) submitButton.disabled = true;
       fetch(WAITLIST_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -1131,12 +1141,26 @@
           email: v,
           source: formId,
           company: honeypot ? honeypot.value : '',
-          submitted_at: FORM_RENDERED_AT,
+          submitted_at: Date.now(),
           metadata: { page: 'landing', ts: new Date().toISOString() },
         }),
       })
-        .then((res) => {
-          if (!res.ok) throw new Error('Waitlist submit failed');
+        .then(async (res) => {
+          const payload = await res.json().catch(() => ({}));
+          if (!res.ok) {
+            if (msg && res.status === 429) {
+              msg.textContent = 'Too many attempts from this network. Please wait 15 minutes and retry.';
+              msg.style.color = '#FFB040';
+              msg.style.display = 'block';
+            } else if (msg && payload && payload.error) {
+              msg.textContent = String(payload.error);
+              msg.style.color = '#FF6060';
+              msg.style.display = 'block';
+            } else {
+              throw new Error('Waitlist submit failed');
+            }
+            return;
+          }
           form.style.display = 'none';
           ok.style.display = 'flex';
           if (window.posthog) {
@@ -1150,11 +1174,19 @@
           email.focus();
           email.style.borderColor = '#FF6060';
           email.style.boxShadow   = '0 0 0 3px rgba(255,96,96,.14)';
+          if (msg) {
+            msg.textContent = 'We could not submit right now. Please try again.';
+            msg.style.color = '#FF6060';
+            msg.style.display = 'block';
+          }
+        })
+        .finally(() => {
+          if (submitButton) submitButton.disabled = false;
         });
     });
   }
-  bind('wl1','wl1-e','wl1-ok','wl1-company');
-  bind('wl2','wl2-e','wl2-ok','wl2-company');
+  bind('wl1','wl1-e','wl1-ok','wl1-company','wl1-msg');
+  bind('wl2','wl2-e','wl2-ok','wl2-company','wl2-msg');
 
 </script>
 
