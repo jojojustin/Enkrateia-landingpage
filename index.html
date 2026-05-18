@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enkrateia — Reclaim Your Attention · Coming to iOS</title>
+  <meta name="description" content="A 90-day structured program to break social media's hold on your time and attention. Phase-gated blocking, daily accountability, and habit science. Coming to iOS Summer 2026.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Enkrateia — Reclaim Your Attention">
+  <meta property="og:description" content="A 90-day structured program to break free from social media and rebuild your relationship with technology.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0A0A0F">
+
+  <!-- Geist — premium, non-generic sans-serif -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Design tokens — match actual app constants/index.ts ─── */
+    :root {
+      /* App exact colors */
+      --bg:          #0A0A0F;
+      --surface:     #0D0D18;
+      --surface-alt: #111120;
+      --border:      #1A1A2A;
+      --border-lt:   #252540;
+
+      --text:        #E0E0F0;
+      --text-1:      #8080A8;
+      --text-2:      #404060;
+
+      --accent:      #6A90FF;   /* exact app accent */
+      --accent-dim:  #3A5ACC;
+      --accent-glow: rgba(106,144,255,0.14);
+      --accent-halo: rgba(106,144,255,0.08);
+
+      /* Phase colors — exact from app */
+      --p1:      #FF6060;   /* Break */
+      --p2:      #FFB040;   /* Build */
+      --p3:      #60C080;   /* Control */
+      --p1-bg:   rgba(255,96,96,0.07);
+      --p2-bg:   rgba(255,176,64,0.07);
+      --p3-bg:   rgba(96,192,128,0.07);
+      --p1-bdr:  rgba(255,96,96,0.20);
+      --p2-bdr:  rgba(255,176,64,0.20);
+      --p3-bdr:  rgba(96,192,128,0.20);
+
+      /* CTA — warm, stands out from cool palette */
+      --cta:     #F07040;
+      --cta-hov: #D85C2C;
+
+      --font: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --max-w: 1100px;
+      --py: 96px;
+    }
+
+    /* ── Reset ─────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    svg { display: block; }
+    button { font-family: var(--font); cursor: pointer; border: none; background: none; }
+    input  { font-family: var(--font); }
+
+    /* ── Layout ────────────────────────────────────────────────── */
+    .wrap {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+    section { padding: var(--py) 0; }
+    .rule   { height: 1px; background: var(--border); }
+
+    /* ── Nav ───────────────────────────────────────────────────── */
+    #nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      padding: 0 28px;
+      transition: background .3s, border-color .3s;
+    }
+    #nav.ink {
+      background: rgba(10,10,15,.88);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-row {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+    .nav-wm {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      color: var(--text);
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+    .nav-links a {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--text-1);
+      transition: color .18s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      color: var(--accent);
+      background: var(--accent-halo);
+      border: 1px solid rgba(106,144,255,.18);
+      padding: 5px 13px;
+      border-radius: 100px;
+    }
+    .nav-pill::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--p3);
+      animation: blink 2.4s ease-in-out infinite;
+    }
+
+    /* ── Hero ──────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 28px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Deep ambient nebula */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 720px; height: 640px;
+      background: radial-gradient(ellipse at center,
+        rgba(106,144,255,.10) 0%,
+        rgba(106,144,255,.03) 48%,
+        transparent 75%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+    }
+
+    /* ── Hand icon ─────────────────────────────────────────────── */
+    /* Outer wrapper: holds the filter + glow + animation.
+       Must NOT have overflow:hidden — that would swallow the drop-shadow. */
+    .hand-glow {
+      display: block;
+      width: 240px;
+      margin: 0 auto 40px;
+      animation: float 7s ease-in-out infinite;
+      filter:
+        grayscale(1)
+        sepia(1)
+        hue-rotate(192deg)
+        saturate(4.5)
+        brightness(1.12)
+        drop-shadow(0 0 36px rgba(106,144,255,0.75))
+        drop-shadow(0 0 12px rgba(160,190,255,0.90))
+        drop-shadow(0 20px 48px rgba(0,0,0,0.45));
+    }
+    /* Inner clip: overflow:hidden cuts the iOS bevel ring. No filter here. */
+    .hand-shell {
+      width: 240px;
+      height: 240px;
+      border-radius: 22%;
+      overflow: hidden;
+      position: relative;
+    }
+    /* Scale 132% so the bevel ring falls outside the clipped area */
+    .hand-shell img {
+      width: 132%;
+      height: 132%;
+      margin: -16% 0 0 -16%;
+      display: block;
+      object-fit: cover;
+    }
+    /* Nav icon — same two-layer trick: outer filters, inner clips */
+    .nav-icon {
+      filter:
+        grayscale(1)
+        sepia(1)
+        hue-rotate(192deg)
+        saturate(4.5)
+        brightness(1.12)
+        drop-shadow(0 0 8px rgba(106,144,255,0.90));
+      flex-shrink: 0;
+    }
+    .nav-icon-clip {
+      width: 28px;
+      height: 28px;
+      border-radius: 22%;
+      overflow: hidden;
+    }
+    .nav-icon-clip img {
+      width: 132%;
+      height: 132%;
+      margin: -16% 0 0 -16%;
+      display: block;
+      object-fit: cover;
+    }
+    .tip-aura {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: sparkle 3.2s ease-in-out infinite;
+    }
+    .tip-core {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: sparkle 3.2s ease-in-out infinite .9s;
+    }
+    @keyframes sparkle {
+      0%,100% { opacity:.35; transform:scale(.78); }
+      50%      { opacity:1;   transform:scale(1.28); }
+    }
+    .hand-svg-el {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ── Eyebrow ───────────────────────────────────────────────── */
+    .eyebrow-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 22px;
+    }
+    .eyebrow-badge .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--p3);
+      flex-shrink: 0;
+      animation: blink 2.4s ease-in-out infinite;
+    }
+
+    /* ── H1 ────────────────────────────────────────────────────── */
+    .hero h1 {
+      font-size: clamp(46px,8.5vw,74px);
+      font-weight: 900;
+      line-height: 1.02;
+      letter-spacing: -.035em;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .hero h1 .lit {
+      color: var(--accent);
+    }
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--text-1);
+      line-height: 1.72;
+      max-width: 460px;
+      margin: 0 auto 36px;
+    }
+
+    /* ── Waitlist ──────────────────────────────────────────────── */
+    .wl-form {
+      display: flex;
+      gap: 8px;
+      max-width: 430px;
+      margin: 0 auto 14px;
+    }
+    .wl-input {
+      flex: 1;
+      height: 50px;
+      padding: 0 18px;
+      background: var(--surface);
+      border: 1px solid var(--border-lt);
+      border-radius: 12px;
+      color: var(--text);
+      font-size: 14px;
+      font-family: var(--font);
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .wl-input::placeholder { color: var(--text-2); }
+    .wl-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+    .wl-btn {
+      height: 50px;
+      padding: 0 22px;
+      background: var(--cta);
+      color: #fff;
+      border-radius: 12px;
+      font-family: var(--font);
+      font-size: 13.5px;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: background .2s, transform .14s;
+    }
+    .wl-btn:hover  { background: var(--cta-hov); transform: translateY(-1px); }
+    .wl-btn:active { transform: translateY(0); }
+    .wl-ok {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--p3);
+      font-size: 14px;
+      font-weight: 600;
+      height: 50px;
+    }
+    .hero-meta {
+      font-size: 11.5px;
+      color: var(--text-2);
+      letter-spacing: .05em;
+      margin-bottom: 44px;
+    }
+
+    /* Phase strip */
+    .ps {
+      display: flex;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .ps-col {
+      flex: 1;
+      padding: 14px 10px 16px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .ps-col:last-child { border-right: none; }
+    .ps-name {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .ps-bar {
+      height: 3px;
+      border-radius: 2px;
+      margin: 0 auto 8px;
+      width: 68%;
+    }
+    .ps-days {
+      font-size: 11px;
+      color: var(--text-2);
+    }
+
+    /* ── Etymology ─────────────────────────────────────────────── */
+    .etym {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .etym-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .etym-left { border-right: 1px solid var(--border); padding-right: 72px; }
+    .etym-greek {
+      font-size: clamp(48px,7vw,80px);
+      font-weight: 300;
+      letter-spacing: .06em;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 12px;
+      opacity: .6;
+    }
+    .etym-pron {
+      font-size: 12px;
+      color: var(--text-2);
+      font-style: italic;
+      letter-spacing: .1em;
+      margin-bottom: 22px;
+    }
+    .etym-quote {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .etym-src {
+      font-size: 12px;
+      color: var(--text-2);
+      font-style: italic;
+    }
+
+    /* ── Section labels ────────────────────────────────────────── */
+    .lbl {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .sec-h {
+      font-size: clamp(28px,4vw,44px);
+      font-weight: 800;
+      letter-spacing: -.028em;
+      line-height: 1.12;
+      margin-bottom: 16px;
+    }
+    .sec-p {
+      font-size: 15.5px;
+      color: var(--text-1);
+      line-height: 1.75;
+      max-width: 560px;
+    }
+
+    /* ── Phases ─────────────────────────────────────────────────── */
+    .phases {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .ph {
+      padding: 28px 24px;
+      border-radius: 16px;
+      border: 1px solid;
+      position: relative;
+    }
+    .ph::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 20px; bottom: 20px;
+      width: 3px;
+      border-radius: 0 2px 2px 0;
+    }
+    .ph.p1 { background: var(--p1-bg); border-color: var(--p1-bdr); }
+    .ph.p1::before { background: var(--p1); }
+    .ph.p2 { background: var(--p2-bg); border-color: var(--p2-bdr); }
+    .ph.p2::before { background: var(--p2); }
+    .ph.p3 { background: var(--p3-bg); border-color: var(--p3-bdr); }
+    .ph.p3::before { background: var(--p3); }
+    .ph-lbl {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .ph-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .ph h3 {
+      font-size: 40px;
+      font-weight: 900;
+      letter-spacing: -.04em;
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+    .ph p {
+      font-size: 13.5px;
+      color: var(--text-1);
+      line-height: 1.72;
+    }
+
+    /* ── Steps ─────────────────────────────────────────────────── */
+    .steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 48px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .step {
+      padding: 34px 38px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      transition: background .2s;
+    }
+    .step:hover { background: var(--surface-alt); }
+    .step:nth-child(2n) { border-right: none; }
+    .step:nth-child(3), .step:nth-child(4) { border-bottom: none; }
+    .step-n {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .step h4 {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      margin-bottom: 10px;
+    }
+    .step p {
+      font-size: 13.5px;
+      color: var(--text-1);
+      line-height: 1.7;
+    }
+
+    /* ── Privacy ─────────────────────────────────────────────────── */
+    .priv-wrap { text-align: center; }
+    .priv-icon {
+      width: 58px; height: 58px;
+      border-radius: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border-lt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+    .priv-cards {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 16px;
+      margin-top: 44px;
+      text-align: left;
+    }
+    .pc {
+      padding: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+    .pc-ico {
+      width: 36px; height: 36px;
+      background: var(--accent-halo);
+      border: 1px solid rgba(106,144,255,.12);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+    .pc h4 { font-size: 14px; font-weight: 700; margin-bottom: 9px; }
+    .pc p  { font-size: 13px; color: var(--text-1); line-height: 1.68; }
+
+    /* ── Stats strip ─────────────────────────────────────────────── */
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 56px;
+    }
+    .stat-item {
+      padding: 28px 20px;
+      border-right: 1px solid var(--border);
+      text-align: center;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-size: clamp(28px,3.5vw,40px);
+      font-weight: 900;
+      letter-spacing: -.04em;
+      line-height: 1;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .stat-label {
+      font-size: 11.5px;
+      color: var(--text-1);
+      line-height: 1.55;
+    }
+    @media (max-width: 680px) {
+      .stats-strip { grid-template-columns: repeat(2,1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(3) { border-top: 1px solid var(--border); }
+      .stat-item:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
+    }
+
+    /* ── Proof bar ───────────────────────────────────────────────── */
+    .proof-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 48px;
+      padding: 16px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 12.5px;
+      color: var(--text-1);
+    }
+    .proof-bar svg { flex-shrink: 0; }
+
+    /* ── CTA section ─────────────────────────────────────────────── */
+    .cta-wrap { text-align: center; }
+
+    /* ── Footer ──────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+    }
+    .ft-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .ft-brand .wm  { font-size: 12.5px; font-weight: 800; letter-spacing: .15em; color: var(--text-1); }
+    .ft-brand .cp  { font-size: 11px; color: var(--text-2); margin-top: 4px; }
+    .ft-links { display: flex; gap: 20px; }
+    .ft-links a { font-size: 12px; color: var(--text-2); transition: color .18s; }
+    .ft-links a:hover { color: var(--text-1); }
+
+    /* ── Keyframes ───────────────────────────────────────────────── */
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-14px); }
+    }
+    @keyframes pulse {
+      0%,100% { opacity: .45; transform: scale(.86); }
+      50%      { opacity: 1;   transform: scale(1.16); }
+    }
+    @keyframes blink {
+      0%,100% { opacity: 1; }
+      50%      { opacity: .2; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hand-shell, .hand-halo,
+      .eyebrow-badge .dot, .nav-pill::before { animation: none; }
+    }
+
+    /* ── Responsive ──────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .etym-grid  { grid-template-columns: 1fr; gap: 36px; }
+      .etym-left  { border-right: none; padding-right: 0; border-bottom: 1px solid var(--border); padding-bottom: 36px; }
+      .phases     { grid-template-columns: 1fr; }
+      .priv-cards { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+    }
+    @media (max-width: 680px) {
+      :root { --py: 64px; }
+      .steps { grid-template-columns: 1fr; }
+      .step  { border-right: none; }
+      .step:nth-child(3) { border-bottom: 1px solid var(--border); }
+      .wl-form { flex-direction: column; }
+      .ps  { display: none; }
+      .ft-row { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 400px) { .hero h1 { font-size: 38px; } }
+  </style>
+</head>
+<body>
+
+<!-- ── Nav ──────────────────────────────────────────────────────── -->
+<nav id="nav">
+  <div class="nav-row">
+    <a href="/" class="nav-brand" aria-label="Enkrateia home">
+      <div class="nav-icon">
+        <div class="nav-icon-clip">
+          <img src="logo.png" alt="" width="37" height="37">
+        </div>
+      </div>
+      <span class="nav-wm">ENKRATEIA</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Site navigation">
+      <a href="#how">How it works</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+
+    <span class="nav-pill" aria-label="Coming to iOS Summer 2026">Coming to iOS</span>
+  </div>
+</nav>
+
+<!-- ── Hero ─────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <!-- App icon: .hand-glow holds the filter/glow, .hand-shell clips the bevel -->
+    <div class="hand-glow" aria-hidden="true">
+      <div class="hand-shell">
+        <img src="logo.png" alt="" width="240" height="240">
+      </div>
+    </div>
+
+    <div class="eyebrow-badge">
+      <span class="dot" aria-hidden="true"></span>
+      Coming to iOS · Summer 2026
+    </div>
+
+    <h1>Reclaim your<br><span class="lit">attention.</span></h1>
+
+    <p class="hero-sub">
+      You don't have a willpower problem — you have a design problem.
+      Enkrateia uses Apple's own Screen Time enforcement to break the compulsive loop in 90 structured days.
+    </p>
+
+    <form class="wl-form" id="wl1" novalidate>
+      <input type="email" class="wl-input" id="wl1-e"
+             placeholder="your@email.com"
+             aria-label="Email for early access"
+             required autocomplete="email">
+      <input type="text" id="wl1-company" name="company" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true">
+      <button type="submit" class="wl-btn">Join waitlist&nbsp;→</button>
+    </form>
+    <div class="wl-ok" id="wl1-ok" role="status">
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-opacity=".35"/>
+        <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      You're on the list. One email at launch.
+    </div>
+    <p class="hero-meta">Free to download · Lifetime access available · iOS only</p>
+
+    <!-- Phase strip -->
+    <div class="ps" aria-label="The three program phases">
+      <div class="ps-col">
+        <div class="ps-name" style="color:var(--p1)">Break</div>
+        <div class="ps-bar"  style="background:var(--p1)"></div>
+        <div class="ps-days">Days 1–30</div>
+      </div>
+      <div class="ps-col">
+        <div class="ps-name" style="color:var(--p2)">Build</div>
+        <div class="ps-bar"  style="background:var(--p2)"></div>
+        <div class="ps-days">Days 31–60</div>
+      </div>
+      <div class="ps-col">
+        <div class="ps-name" style="color:var(--p3)">Control</div>
+        <div class="ps-bar"  style="background:var(--p3)"></div>
+        <div class="ps-days">Days 61–90</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Etymology ─────────────────────────────────────────────────── -->
+<section class="etym">
+  <div class="wrap">
+    <div class="etym-grid">
+      <div class="etym-left">
+        <div class="etym-greek" aria-label="enkrateia in ancient Greek">ἐγκράτεια</div>
+        <div class="etym-pron">en · KRAH · tee · ah</div>
+        <div class="etym-quote">"The discipline to pursue what is genuinely good — over what merely feels good in the moment."</div>
+        <div class="etym-src">— Aristotle, <em>Nicomachean Ethics</em></div>
+      </div>
+      <div>
+        <p class="lbl">The name</p>
+        <h2 class="sec-h" style="font-size:clamp(24px,3.2vw,36px);">Ancient wisdom.<br>Modern problem.</h2>
+        <p class="sec-p">
+          Aristotle described <em>enkrateia</em> as self-mastery — not the suppression of desire,
+          but the strength to choose what matters above what distracts. Two thousand years later,
+          the struggle is the same. The apps are new. The principle isn't.
+        </p>
+        <p class="sec-p" style="margin-top:16px;">
+          This program won't lecture you. It will hold you accountable.
+          Ninety days. Three phases. One commitment.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Stats ──────────────────────────────────────────────────────── -->
+<section style="padding-top:0;padding-bottom:0;">
+  <div class="wrap">
+    <div class="stats-strip">
+      <div class="stat-item">
+        <div class="stat-num" style="color:var(--accent)">90</div>
+        <div class="stat-label">days of enforced<br>structure</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" style="color:var(--p2)">3</div>
+        <div class="stat-label">escalating phases,<br>each harder differently</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" style="color:var(--p3)">40%</div>
+        <div class="stat-label">reduction in impulsive use<br>from one daily question<sup>*</sup></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" style="color:var(--p1)">Day 14</div>
+        <div class="stat-label">when most people quit.<br>You won't.</div>
+      </div>
+    </div>
+    <p style="font-size:11px;color:var(--text-2);margin-top:10px;text-align:right;">* Lally et al., 2010. Intentionality effect on impulse behavior.</p>
+  </div>
+</section>
+
+<!-- ── Phases ────────────────────────────────────────────────────── -->
+<section>
+  <div class="wrap">
+    <p class="lbl">The program</p>
+    <h2 class="sec-h">Three phases.<br>One transformation.</h2>
+    <p class="sec-p">The structure is the intervention. Each phase is harder in a different way — not harder to quit, but harder to stay comfortable with how you used to be.</p>
+
+    <div class="phases">
+      <div class="ph p1">
+        <div class="ph-lbl" style="color:var(--p1)">
+          <span class="ph-dot" style="background:var(--p1)"></span>
+          Phase 1 · Days 1–30
+        </div>
+        <h3 style="color:var(--p1)">Break.</h3>
+        <p>The automatic loop ends here. Your chosen apps are blocked via iOS enforcement — no exceptions, no override, no workarounds. Most people feel the pull strongest on Days 3–7. That's the program working.</p>
+      </div>
+      <div class="ph p2">
+        <div class="ph-lbl" style="color:var(--p2)">
+          <span class="ph-dot" style="background:var(--p2)"></span>
+          Phase 2 · Days 31–60
+        </div>
+        <h3 style="color:var(--p2)">Build.</h3>
+        <p>Every morning you answer one question: do I want access today? Research shows adding this single deliberate moment reduces impulsive use by 40%. You're restoring the agency compulsion removes.</p>
+      </div>
+      <div class="ph p3">
+        <div class="ph-lbl" style="color:var(--p3)">
+          <span class="ph-dot" style="background:var(--p3)"></span>
+          Phase 3 · Days 61–90
+        </div>
+        <h3 style="color:var(--p3)">Control.</h3>
+        <p>Lighter guardrails, real proof. By Day 90 you have data: your craving curve, your journal, and a demonstrated ability to function without compulsive scrolling. That's not willpower — that's a new pattern.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ── How it works ──────────────────────────────────────────────── -->
+<section id="how">
+  <div class="wrap">
+    <p class="lbl">How it works</p>
+    <h2 class="sec-h">Simple enough to start.<br>Strong enough to stick.</h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">01</div>
+        <h4>Pick your apps. Set a date.</h4>
+        <p>No lengthy setup. Choose which apps to block, pick your start date, and add an accountability partner. If you go 48 hours without checking in, they'll know. That's the point.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">02</div>
+        <h4>iOS locks it. No workaround exists.</h4>
+        <p>Enkrateia uses Apple's Family Controls framework — not a VPN or browser trick. The block is enforced at the OS level. You cannot override it, and neither can we. That's not a bug. That's the feature.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">03</div>
+        <h4>Check in. Watch your craving curve drop.</h4>
+        <p>Thirty seconds a day: rate your craving, add a note if you want. Over time you'll see the curve fall. You'll have proof — not a feeling, but data — that the compulsion is loosening.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">04</div>
+        <h4>Read the letter you wrote yourself.</h4>
+        <p>On Day 1 you'll write a letter to your Day-90 self. On Day 90 it gets delivered. That letter is the only review that matters — and you already know what you want it to say.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ── Privacy ───────────────────────────────────────────────────── -->
+<section id="privacy">
+  <div class="wrap priv-wrap">
+    <div class="priv-icon" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L4 6v6c0 4.5 3.4 8.7 8 9.9C16.6 20.7 20 16.5 20 12V6l-8-4z"
+              stroke="#6A90FF" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M9 12l2 2 4-4" stroke="#6A90FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <p class="lbl">Privacy</p>
+    <h2 class="sec-h">Your recovery is<br>nobody's business.</h2>
+    <p class="sec-p" style="margin:0 auto;">
+      We built this for people in a genuinely private struggle. Your data is treated with
+      the same discipline we ask of you.
+    </p>
+
+    <div class="priv-cards">
+      <div class="pc">
+        <div class="pc-ico" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="11" width="18" height="11" rx="2" stroke="#6A90FF" stroke-width="1.5"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="#6A90FF" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>End-to-end journal encryption</h4>
+        <p>Journal entries are encrypted on your device using AES-256-GCM before transmission. The key lives in your iPhone's Secure Enclave. We cannot read your journal. Nobody can.</p>
+      </div>
+      <div class="pc">
+        <div class="pc-ico" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="9" stroke="#6A90FF" stroke-width="1.5"/>
+            <path d="M9 9s0-3 3-3 3 2.5 3 3-1.5 2-3 2" stroke="#6A90FF" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="12" cy="16" r="1" fill="#6A90FF"/>
+          </svg>
+        </div>
+        <h4>App names stay private</h4>
+        <p>Family Controls uses opaque tokens — iOS keeps app names private even from us. We never know which apps you blocked. Your specific struggle is yours alone.</p>
+      </div>
+      <div class="pc">
+        <div class="pc-ico" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+            <polyline points="3 6 5 6 21 6" stroke="#6A90FF" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M19 6l-1 14H6L5 6" stroke="#6A90FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 11v6M14 11v6" stroke="#6A90FF" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Delete anytime</h4>
+        <p>Delete your account directly from Settings — no email required, no waiting period. All data is cleared from our servers within 30 days.</p>
+      </div>
+    </div>
+
+    <p style="margin-top:30px;font-size:12.5px;color:var(--text-2);">
+      Read the full
+      <a href="privacy.html" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">Privacy Policy</a>
+      — written to be read, not avoided.
+    </p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ── CTA / Waitlist ─────────────────────────────────────────────── -->
+<section>
+  <div class="wrap cta-wrap">
+    <p class="lbl">Join the waitlist</p>
+    <h2 class="sec-h">You've been meaning<br>to do this.</h2>
+    <p class="sec-p" style="margin:0 auto 10px;">
+      Enkrateia opens Summer 2026. Founding members get lifetime access and priority onboarding.
+    </p>
+    <p class="sec-p" style="margin:0 auto 32px;font-size:14px;color:var(--text-2);">
+      One email at launch. No drip campaigns. No noise.
+    </p>
+    <form class="wl-form" id="wl2" novalidate style="margin:0 auto;">
+      <input type="email" class="wl-input" id="wl2-e"
+             placeholder="you@example.com"
+             aria-label="Email for waitlist"
+             required autocomplete="email">
+      <input type="text" id="wl2-company" name="company" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true">
+      <button type="submit" class="wl-btn">Join waitlist&nbsp;→</button>
+    </form>
+    <div class="wl-ok" id="wl2-ok" role="status" style="justify-content:center;margin-top:12px;">
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-opacity=".35"/>
+        <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      You're on the list. One email at launch.
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ────────────────────────────────────────────────────── -->
+<footer>
+  <div class="wrap">
+    <div class="ft-row">
+      <div class="ft-brand">
+        <div class="wm">ENKRATEIA</div>
+        <div class="cp">© 2026 Native Group LLC. All rights reserved.</div>
+      </div>
+      <nav class="ft-links" aria-label="Footer links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="mailto:support@enkrateia.app">support@enkrateia.app</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /*
+    Supabase Edge Function endpoint:
+    https://<project-ref>.functions.supabase.co/waitlist-signup
+  */
+  const WAITLIST_ENDPOINT = 'https://jtlhhomzkfiufyoitpfg.functions.supabase.co/waitlist-signup';
+  const ANALYTICS = {
+    posthogKey: '',
+    posthogHost: 'https://app.posthog.com',
+    gaMeasurementId: '',
+  };
+  const ANALYTICS_CONSENT_KEY = 'enkrateia_analytics_consent_v1';
+  const FORM_RENDERED_AT = Date.now();
+
+  /* Nav ink on scroll */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('ink', window.scrollY > 20);
+  }, { passive: true });
+
+  function initAnalytics() {
+    if (ANALYTICS.posthogKey) {
+      !function(t,e){var o,n,p,r;e.__SV=1,window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split('.');2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement('script')).type='text/javascript',p.crossOrigin='anonymous',p.async=!0,p.src=s.api_host.replace('.i.posthog.com','-assets.i.posthog.com')+'/static/array.js',(r=t.getElementsByTagName('script')[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a='posthog',u.people=u.people||[],u.toString=function(t){var e='posthog';return'posthog'!==a&&(e+='.'+a),t||(e+=' (stub)'),e},u.people.toString=function(){return u.toString(1)+'.people (stub)'},o='init capture register register_once unregister unregister_once identify alias set_config reset opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing start_batch_senders stop_batch_senders'.split(' '),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1}(document,window.posthog||[]);
+      posthog.init(ANALYTICS.posthogKey, { api_host: ANALYTICS.posthogHost, person_profiles: 'identified_only' });
+      posthog.capture('landing_page_viewed');
+    }
+
+    if (ANALYTICS.gaMeasurementId) {
+      const gtagScript = document.createElement('script');
+      gtagScript.async = true;
+      gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${ANALYTICS.gaMeasurementId}`;
+      document.head.appendChild(gtagScript);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ window.dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', ANALYTICS.gaMeasurementId, { anonymize_ip: true });
+    }
+  }
+
+  function setConsent(enabled) {
+    localStorage.setItem(ANALYTICS_CONSENT_KEY, enabled ? 'yes' : 'no');
+    const banner = document.getElementById('analytics-consent');
+    if (banner) banner.style.display = 'none';
+    if (enabled) initAnalytics();
+  }
+
+  const savedConsent = localStorage.getItem(ANALYTICS_CONSENT_KEY);
+  if (savedConsent === 'yes') initAnalytics();
+  document.addEventListener('DOMContentLoaded', () => {
+    if (!savedConsent) {
+      const banner = document.getElementById('analytics-consent');
+      if (banner) banner.style.display = 'block';
+    }
+  });
+
+  /* Waitlist handler */
+  function bind(formId, emailId, okId, honeypotId) {
+    const form  = document.getElementById(formId);
+    const email = document.getElementById(emailId);
+    const ok    = document.getElementById(okId);
+    const honeypot = document.getElementById(honeypotId);
+    if (!form) return;
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const v = email.value.trim();
+      if (!v || !v.includes('@')) {
+        email.focus();
+        email.style.borderColor = '#FF6060';
+        email.style.boxShadow   = '0 0 0 3px rgba(255,96,96,.14)';
+        setTimeout(() => { email.style.borderColor = ''; email.style.boxShadow = ''; }, 1800);
+        return;
+      }
+      if (!WAITLIST_ENDPOINT) {
+        form.style.display = 'none';
+        ok.style.display   = 'flex';
+        return;
+      }
+
+      fetch(WAITLIST_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: v,
+          source: formId,
+          company: honeypot ? honeypot.value : '',
+          submitted_at: FORM_RENDERED_AT,
+          metadata: { page: 'landing', ts: new Date().toISOString() },
+        }),
+      })
+        .then((res) => {
+          if (!res.ok) throw new Error('Waitlist submit failed');
+          form.style.display = 'none';
+          ok.style.display = 'flex';
+          if (window.posthog) {
+            window.posthog.capture('waitlist_signup', { source: formId });
+          }
+          if (window.gtag) {
+            window.gtag('event', 'waitlist_signup', { source: formId });
+          }
+        })
+        .catch(() => {
+          email.focus();
+          email.style.borderColor = '#FF6060';
+          email.style.boxShadow   = '0 0 0 3px rgba(255,96,96,.14)';
+        });
+    });
+  }
+  bind('wl1','wl1-e','wl1-ok','wl1-company');
+  bind('wl2','wl2-e','wl2-ok','wl2-company');
+
+</script>
+
+<div id="analytics-consent" style="display:none;position:fixed;left:16px;right:16px;bottom:16px;z-index:120;background:#111120;border:1px solid #252540;border-radius:12px;padding:14px;">
+  <p style="font-size:13px;color:#E0E0F0;line-height:1.5;margin-bottom:10px;">
+    Allow privacy-safe analytics (PostHog + Google Analytics) so we can improve this page?
+  </p>
+  <div style="display:flex;gap:8px;">
+    <button onclick="setConsent(false)" style="flex:1;padding:10px;border-radius:8px;border:1px solid #252540;color:#8080A8;">No thanks</button>
+    <button onclick="setConsent(true)" style="flex:1;padding:10px;border-radius:8px;background:#6A90FF;color:white;font-weight:700;">Allow</button>
+  </div>
+</div>
+
+</body>
+</html>

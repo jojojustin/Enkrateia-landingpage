@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service — Enkrateia</title>
+  <meta name="description" content="Enkrateia Terms of Service.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#07090F">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:       #07090F;
+      --bg-1:     #0C1220;
+      --bg-2:     #111C30;
+      --border:   #1A2840;
+      --border-1: #243858;
+      --text:     #EFF3FF;
+      --text-1:   #8A9DC4;
+      --text-2:   #4A5C7A;
+      --accent:   #5C85F0;
+      --accent-lt:#7AADFF;
+      --p1:       #EF5050;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-w: 720px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--accent-lt); }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(7,9,15,.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 28px;
+      z-index: 10;
+    }
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-home {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+    }
+    .nav-icon {
+      filter:
+        grayscale(1) sepia(1) hue-rotate(192deg) saturate(4.5) brightness(1.12)
+        drop-shadow(0 0 8px rgba(106,144,255,0.90));
+      flex-shrink: 0;
+    }
+    .nav-icon-clip {
+      width: 28px;
+      height: 28px;
+      border-radius: 22%;
+      overflow: hidden;
+    }
+    .nav-icon-clip img {
+      width: 132%;
+      height: 132%;
+      margin: -16% 0 0 -16%;
+      display: block;
+      object-fit: cover;
+    }
+    .nav-home-wm {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      color: var(--text);
+    }
+    .nav-back {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-2);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-back:hover { color: var(--text-1); }
+
+    .page-wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 56px 28px 96px;
+    }
+    .page-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .page-title {
+      font-size: clamp(28px,5vw,42px);
+      font-weight: 900;
+      letter-spacing: -.025em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .page-effective {
+      font-size: 12px;
+      color: var(--text-2);
+      margin-bottom: 28px;
+    }
+    .page-intro {
+      font-size: 15px;
+      color: var(--text-1);
+      line-height: 1.75;
+      padding: 20px 24px;
+      background: var(--bg-1);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 10px;
+      margin-bottom: 48px;
+    }
+
+    .doc-section {
+      margin-bottom: 44px;
+    }
+    .doc-section h2 {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      color: var(--text);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .doc-section p {
+      font-size: 14px;
+      color: var(--text-1);
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .doc-section p:last-child { margin-bottom: 0; }
+
+    .sub-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 20px 0 10px;
+    }
+
+    .bullet-list {
+      list-style: none;
+      margin: 0 0 14px;
+    }
+    .bullet-list li {
+      display: flex;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-1);
+      line-height: 1.68;
+      padding: 4px 0;
+    }
+    .bullet-list li::before {
+      content: '·';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .callout {
+      background: var(--bg-1);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--p1);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-size: 13px;
+      color: var(--text-1);
+      line-height: 1.7;
+    }
+    .callout strong { color: var(--text); }
+
+    .contact-box {
+      background: var(--bg-1);
+      border: 1px solid var(--border-1);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .contact-box p { margin-bottom: 8px; }
+    .contact-box p:last-child { margin-bottom: 0; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px;
+      text-align: center;
+    }
+    footer .links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    footer .links a {
+      font-size: 12px;
+      color: var(--text-2);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    footer .links a:hover { color: var(--text-1); }
+    footer .copy { font-size: 11px; color: var(--text-2); }
+
+    @media (max-width: 600px) {
+      .page-wrap { padding: 40px 20px 72px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-home" aria-label="Enkrateia home">
+      <div class="nav-icon">
+        <div class="nav-icon-clip">
+          <img src="logo.png" alt="" width="37" height="37">
+        </div>
+      </div>
+      <span class="nav-home-wm">ENKRATEIA</span>
+    </a>
+    <a href="index.html" class="nav-back">← Back to site</a>
+  </div>
+</nav>
+
+<main class="page-wrap">
+
+  <p class="page-label">Legal</p>
+  <h1 class="page-title">Terms of Service</h1>
+  <p class="page-effective">Effective April 26, 2026 · Version 1.0</p>
+
+  <div class="page-intro">
+    These Terms govern your use of the Enkrateia app and website, operated by Native Group LLC. By downloading
+    or using Enkrateia, you agree to these Terms. If you don't agree, don't use the app.
+  </div>
+
+  <!-- 1. What Enkrateia is -->
+  <div class="doc-section">
+    <h2>1. What Enkrateia is — and isn't</h2>
+    <p>
+      Enkrateia is a structured 90-day self-improvement program designed to help users intentionally reduce
+      social media use through phase-gated app blocking, daily check-ins, and accountability tools.
+    </p>
+    <div class="callout">
+      <strong>Not a medical service.</strong> Enkrateia is not a medical device, mental health treatment,
+      or clinical intervention. It does not diagnose, treat, cure, or prevent any condition. If you are
+      experiencing mental health difficulties, please consult a qualified healthcare professional.
+    </div>
+    <p>
+      The program uses Apple's Family Controls framework to restrict access to apps and websites you designate.
+      This is an individual device management tool — it is not parental controls and is not designed for use on
+      another person's device without their informed consent.
+    </p>
+  </div>
+
+  <!-- 2. Eligibility -->
+  <div class="doc-section">
+    <h2>2. Eligibility</h2>
+    <ul class="bullet-list">
+      <li>You must be at least 18 years old to use Enkrateia.</li>
+      <li>You must have a valid Apple ID and iOS device capable of running the app.</li>
+      <li>You must not be prohibited from using the app under applicable laws.</li>
+      <li>By creating an account, you confirm you meet these requirements.</li>
+    </ul>
+  </div>
+
+  <!-- 3. Account -->
+  <div class="doc-section">
+    <h2>3. Your account</h2>
+    <p>
+      You are responsible for maintaining the security of your account credentials. Do not share your login
+      with others. You are responsible for all activity that occurs under your account.
+    </p>
+    <p>
+      You may delete your account at any time from Settings → Delete account. Upon deletion, your data is
+      removed from our servers within 30 days. See the Privacy Policy for full details.
+    </p>
+  </div>
+
+  <!-- 4. Purchases -->
+  <div class="doc-section">
+    <h2>4. In-app purchases and refunds</h2>
+    <p>
+      Enkrateia may offer a lifetime access purchase processed entirely through Apple's App Store. All payment
+      terms, including pricing, refund eligibility, and billing disputes, are governed by Apple's Media Services
+      Terms and Conditions.
+    </p>
+    <p>
+      To request a refund, use Apple's standard refund request process at
+      <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>.
+      We have no ability to issue refunds directly.
+    </p>
+    <p>
+      You can restore a prior purchase at any time using the "Restore Purchases" option in Settings or on
+      the paywall screen.
+    </p>
+  </div>
+
+  <!-- 5. Program commitment -->
+  <div class="doc-section">
+    <h2>5. The 90-day program</h2>
+    <p>
+      The program is structured across three phases: Break (Days 1–30), Build (Days 31–60), and Control (Days 61–90).
+      Each phase has specific blocking behavior and interaction patterns.
+    </p>
+
+    <p class="sub-label">Crisis overrides</p>
+    <p>
+      Each phase provides a limited number of crisis overrides — temporary deactivations of blocking for genuine
+      emergencies. Overrides are time-limited and logged. The number of remaining overrides per phase is displayed
+      in the app. Use of an override notifies your accountability partner if one is set up.
+    </p>
+
+    <p class="sub-label">Phase transitions</p>
+    <p>
+      Phase transitions occur automatically at Days 31 and 61. Features and restrictions change at each transition
+      as described in the app. There is no refund or credit for early exit from the program.
+    </p>
+  </div>
+
+  <!-- 6. Acceptable use -->
+  <div class="doc-section">
+    <h2>6. Acceptable use</h2>
+    <p>You agree not to:</p>
+    <ul class="bullet-list">
+      <li>Use the app to restrict another person's device without their full knowledge and consent.</li>
+      <li>Attempt to reverse-engineer, circumvent, or manipulate the blocking mechanisms.</li>
+      <li>Use the app in any way that violates applicable laws or regulations.</li>
+      <li>Share account credentials or access the app on behalf of another person without authorization.</li>
+      <li>Upload any content to the app's journal or check-in features that is illegal, threatening, or harmful.</li>
+    </ul>
+  </div>
+
+  <!-- 7. Accountability partner -->
+  <div class="doc-section">
+    <h2>7. Accountability partner</h2>
+    <p>
+      If you add an accountability partner, you confirm that you have their consent to receive automated
+      program status emails from Enkrateia. You are responsible for obtaining this consent. Partners can
+      unsubscribe from emails at any time using the link included in every email.
+    </p>
+    <p>
+      Enkrateia is not responsible for the outcomes of the accountability partnership relationship. Partner
+      emails contain program status information only — no personal content is shared.
+    </p>
+  </div>
+
+  <!-- 8. Family Controls -->
+  <div class="doc-section">
+    <h2>8. Family Controls and Screen Time</h2>
+    <p>
+      Enkrateia uses Apple's Family Controls framework (Screen Time API) to implement app blocking. This
+      requires you to authorize the app for device management on your own device. You remain solely responsible
+      for which apps and domains you choose to block.
+    </p>
+    <p>
+      Blocking behavior may vary across iOS versions. We do not guarantee identical behavior across all
+      supported iOS versions. Core blocking functionality requires a physical iOS device — it cannot be
+      fully tested in a simulator.
+    </p>
+  </div>
+
+  <!-- 9. Disclaimer of warranties -->
+  <div class="doc-section">
+    <h2>9. Disclaimer of warranties</h2>
+    <p>
+      Enkrateia is provided "as is" and "as available" without warranties of any kind, express or implied.
+      We do not warrant that the app will be error-free, uninterrupted, or that any particular outcome
+      will result from using the program.
+    </p>
+    <p>
+      Results vary by individual. We make no guarantees about the effectiveness of the program in changing
+      habits or reducing social media use.
+    </p>
+  </div>
+
+  <!-- 10. Limitation of liability -->
+  <div class="doc-section">
+    <h2>10. Limitation of liability</h2>
+    <p>
+      To the maximum extent permitted by law, Native Group LLC shall not be liable for any indirect,
+      incidental, special, consequential, or punitive damages arising from your use of Enkrateia,
+      even if advised of the possibility of such damages.
+    </p>
+    <p>
+      Our total liability to you for any claim arising out of these Terms or your use of the app shall
+      not exceed the amount you paid for the app in the 12 months preceding the claim.
+    </p>
+  </div>
+
+  <!-- 11. Governing law -->
+  <div class="doc-section">
+    <h2>11. Governing law</h2>
+    <p>
+      These Terms are governed by the laws of the United States and the State of Colorado, without
+      regard to conflict of law principles. Any disputes shall be resolved in the courts of Colorado.
+    </p>
+  </div>
+
+  <!-- 12. Changes -->
+  <div class="doc-section">
+    <h2>12. Changes to these Terms</h2>
+    <p>
+      We may update these Terms from time to time. If we make material changes, we'll notify you via email
+      and through the app before the changes take effect. Continued use of the app after changes take effect
+      constitutes acceptance of the updated Terms.
+    </p>
+  </div>
+
+  <!-- 13. Contact -->
+  <div class="doc-section">
+    <h2>13. Contact</h2>
+    <div class="contact-box">
+      <p>For legal inquiries:<br>
+        <a href="mailto:support@enkrateia.app">support@enkrateia.app</a>
+      </p>
+      <p>For privacy and data requests:<br>
+        <a href="mailto:privacy@enkrateia.app">privacy@enkrateia.app</a>
+      </p>
+      <p style="font-size:12px;color:var(--text-2);margin-top:14px;">
+        Enkrateia Terms of Service · Version 1.0 · Effective April 26, 2026<br>
+        Native Group LLC
+      </p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="mailto:support@enkrateia.app">support@enkrateia.app</a>
+  </div>
+  <p class="copy">© 2026 Native Group LLC. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

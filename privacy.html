@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Enkrateia</title>
+  <meta name="description" content="Enkrateia Privacy Policy. We wrote it to be read, not avoided.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#07090F">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:      #07090F;
+      --bg-1:    #0C1220;
+      --bg-2:    #111C30;
+      --border:  #1A2840;
+      --border-1:#243858;
+      --text:    #EFF3FF;
+      --text-1:  #8A9DC4;
+      --text-2:  #4A5C7A;
+      --accent:  #5C85F0;
+      --accent-lt:#7AADFF;
+      --p3:      #2EC974;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-w: 720px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--accent-lt); }
+
+    /* Nav */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(7,9,15,.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 28px;
+      z-index: 10;
+    }
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-home {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+    }
+    .nav-icon {
+      filter:
+        grayscale(1) sepia(1) hue-rotate(192deg) saturate(4.5) brightness(1.12)
+        drop-shadow(0 0 8px rgba(106,144,255,0.90));
+      flex-shrink: 0;
+    }
+    .nav-icon-clip {
+      width: 28px;
+      height: 28px;
+      border-radius: 22%;
+      overflow: hidden;
+    }
+    .nav-icon-clip img {
+      width: 132%;
+      height: 132%;
+      margin: -16% 0 0 -16%;
+      display: block;
+      object-fit: cover;
+    }
+    .nav-home-wm {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      color: var(--text);
+    }
+    .nav-back {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-2);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: color .2s;
+    }
+    .nav-back:hover { color: var(--text-1); }
+
+    /* Content */
+    .page-wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 56px 28px 96px;
+    }
+    .page-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .page-title {
+      font-size: clamp(28px,5vw,42px);
+      font-weight: 900;
+      letter-spacing: -.025em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .page-effective {
+      font-size: 12px;
+      color: var(--text-2);
+      margin-bottom: 28px;
+    }
+    .page-intro {
+      font-size: 15px;
+      color: var(--text-1);
+      line-height: 1.75;
+      padding: 20px 24px;
+      background: var(--bg-1);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 10px;
+      margin-bottom: 48px;
+    }
+
+    /* Sections */
+    .doc-section {
+      margin-bottom: 44px;
+    }
+    .doc-section h2 {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      color: var(--text);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .doc-section p {
+      font-size: 14px;
+      color: var(--text-1);
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .doc-section p:last-child { margin-bottom: 0; }
+
+    /* Sub-headers */
+    .sub-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 20px 0 10px;
+    }
+
+    /* Bullet list */
+    .bullet-list {
+      list-style: none;
+      margin: 0 0 14px;
+    }
+    .bullet-list li {
+      display: flex;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-1);
+      line-height: 1.68;
+      padding: 4px 0;
+    }
+    .bullet-list li::before {
+      content: '·';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Callout (highlight) */
+    .callout {
+      background: var(--bg-1);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--p3);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-size: 13px;
+      color: var(--text-1);
+      line-height: 1.7;
+    }
+    .callout strong { color: var(--text); }
+
+    /* Third party table */
+    .tp-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 13px;
+    }
+    .tp-table th {
+      text-align: left;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--text-2);
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .tp-table td {
+      padding: 10px 12px;
+      color: var(--text-1);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .tp-table tr:last-child td { border-bottom: none; }
+    .tp-table td:first-child { color: var(--text); font-weight: 600; }
+
+    /* Contact box */
+    .contact-box {
+      background: var(--bg-1);
+      border: 1px solid var(--border-1);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .contact-box p { margin-bottom: 8px; }
+    .contact-box p:last-child { margin-bottom: 0; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 28px;
+      text-align: center;
+    }
+    footer .links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    footer .links a {
+      font-size: 12px;
+      color: var(--text-2);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    footer .links a:hover { color: var(--text-1); }
+    footer .copy {
+      font-size: 11px;
+      color: var(--text-2);
+    }
+
+    @media (max-width: 600px) {
+      .page-wrap { padding: 40px 20px 72px; }
+      .tp-table { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-home" aria-label="Enkrateia home">
+      <div class="nav-icon">
+        <div class="nav-icon-clip">
+          <img src="logo.png" alt="" width="37" height="37">
+        </div>
+      </div>
+      <span class="nav-home-wm">ENKRATEIA</span>
+    </a>
+    <a href="index.html" class="nav-back">← Back to site</a>
+  </div>
+</nav>
+
+<main class="page-wrap">
+
+  <p class="page-label">Legal</p>
+  <h1 class="page-title">Privacy Policy</h1>
+  <p class="page-effective">Effective April 26, 2026 · Version 1.0</p>
+
+  <div class="page-intro">
+    Enkrateia is a 90-day social media recovery program. This policy explains what data we collect,
+    why we collect it, and how it's protected. We've written this to be read, not avoided.
+  </div>
+
+  <!-- 1. What we collect -->
+  <div class="doc-section">
+    <h2>1. What we collect and why</h2>
+    <p>We collect only what the program requires to function. Nothing is collected for advertising.</p>
+
+    <p class="sub-label">Always collected (program operation)</p>
+    <ul class="bullet-list">
+      <li><strong>Email address</strong> — your account identifier. Used to log in and receive your graduation artifact.</li>
+      <li><strong>Program state</strong> — current day, phase, check-in ratings. Required to run the 90-day program.</li>
+      <li><strong>Blocking configuration</strong> — whether the App Store is blocked, which web domains are blocked. Stored so blocking can be restored if the app is reinstalled.</li>
+      <li><strong>Push notification token</strong> — to send daily check-in reminders and milestone alerts.</li>
+      <li><strong>Partner email and name</strong> — if you set up an accountability partner. Used only to send the 5 program notification emails.</li>
+    </ul>
+
+    <p class="sub-label">Collected only with your consent</p>
+    <ul class="bullet-list">
+      <li><strong>Craving event counts</strong> — the number of times the block screen appeared per hour and per day. Never which apps triggered it. Used for your craving curve graph and anonymous research.</li>
+      <li><strong>Journal entries</strong> — encrypted on your device with AES-256-GCM before upload. We store only ciphertext. See "Journal encryption" below.</li>
+      <li><strong>Screen time self-report</strong> — hours per day at program start and Day 90. Used for your graduation summary only.</li>
+      <li><strong>Product analytics</strong> — which screens were visited, which features were used. No personal content. Collected via PostHog with your explicit consent during onboarding.</li>
+      <li><strong>Website analytics (optional)</strong> — landing-page traffic and waitlist conversion events using Google Analytics and/or PostHog, only after you accept the analytics prompt on the website.</li>
+    </ul>
+
+    <p class="sub-label">Never collected</p>
+    <ul class="bullet-list">
+      <li>Which specific apps you blocked. Apple's Family Controls uses opaque tokens — the app never knows the app names.</li>
+      <li>URLs you visited or browsed.</li>
+      <li>Health data, location data, or contacts.</li>
+      <li>Journal content in plaintext — ever.</li>
+      <li>Payment information — handled entirely by Apple.</li>
+    </ul>
+  </div>
+
+  <!-- 2. Journal encryption -->
+  <div class="doc-section">
+    <h2>2. Journal encryption</h2>
+    <div class="callout">
+      <strong>Your journal entries are encrypted on your device</strong> using AES-256-GCM before they're sent anywhere.
+      The encryption key is generated once, stored in your iPhone's Secure Enclave (iOS Keychain), and never transmitted
+      to our servers or anyone else.
+    </div>
+    <p>
+      This means: if your device is lost or wiped without a backup, your journal entries cannot be recovered — not by us,
+      not by anyone. This is intentional. Your journal is yours.
+    </p>
+    <p>We will state this clearly in the app and will not pretend otherwise.</p>
+  </div>
+
+  <!-- 3. Accountability partner -->
+  <div class="doc-section">
+    <h2>3. Accountability partner</h2>
+    <p>
+      If you add an accountability partner, we'll send them emails in 5 situations: when you start the program, when
+      you hit milestones (Days 7, 30, 60, 90), if you miss a check-in for 48 hours, if you use the crisis override and
+      confirm a temporary deactivation, and when you graduate.
+    </p>
+    <p>
+      Partners receive status updates only — never your journal content, check-in notes, or which apps you blocked.
+      Every partner email includes an unsubscribe link.
+    </p>
+  </div>
+
+  <!-- 4. Third-party services -->
+  <div class="doc-section">
+    <h2>4. Third-party services</h2>
+    <p>We use the following services to operate Enkrateia:</p>
+    <table class="tp-table" role="table">
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Purpose</th>
+          <th>Data shared</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Supabase (US)</td>
+          <td>Database and authentication</td>
+          <td>Account info, program state, encrypted journal ciphertext. Row-level security — your data is isolated and inaccessible to other users.</td>
+        </tr>
+        <tr>
+          <td>RevenueCat</td>
+          <td>Subscription management</td>
+          <td>Purchase status only. We never see your payment details.</td>
+        </tr>
+        <tr>
+          <td>Apple</td>
+          <td>Payment processing, app distribution, Sign in with Apple</td>
+          <td>Governed by Apple's privacy policy.</td>
+        </tr>
+        <tr>
+          <td>Resend</td>
+          <td>Email delivery</td>
+          <td>Partner email address and program milestone data for the 5 notification emails.</td>
+        </tr>
+        <tr>
+          <td>Sentry</td>
+          <td>Crash and error monitoring</td>
+          <td>Technical error reports, stripped of personally identifiable information before transmission.</td>
+        </tr>
+        <tr>
+          <td>PostHog</td>
+          <td>Product analytics</td>
+          <td>Screen visits and feature usage — no personal content. <strong>Only active if you consented during onboarding.</strong> Withdrawable in Settings.</td>
+        </tr>
+        <tr>
+          <td>Google Analytics</td>
+          <td>Website analytics</td>
+          <td>Landing-page usage and conversion events (IP anonymization enabled). <strong>Only active if you accept website analytics consent.</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 5. Data retention and deletion -->
+  <div class="doc-section">
+    <h2>5. Data retention and deletion</h2>
+    <p>
+      Your data is retained for the duration of your program plus 90 days — to allow the future-self letter delivery,
+      if applicable. After that, inactive accounts are scheduled for deletion.
+    </p>
+    <p><strong>To delete your account immediately:</strong></p>
+    <p>Go to <strong>Settings → Delete account</strong> (at the bottom of the screen). This clears all your data from our servers within 30 days. We will confirm deletion by email.</p>
+    <p>Or email us: <a href="mailto:privacy@enkrateia.app">privacy@enkrateia.app</a></p>
+  </div>
+
+  <!-- 6. Data export -->
+  <div class="doc-section">
+    <h2>6. Data export</h2>
+    <p>
+      You can request a copy of all data we hold about you. Email
+      <a href="mailto:privacy@enkrateia.app">privacy@enkrateia.app</a> and we'll send a JSON export within 72 hours.
+      The export includes your program data, check-ins, and craving event counts.
+      It will not include decrypted journal entries — we don't have the key.
+    </p>
+  </div>
+
+  <!-- 7. Age requirement -->
+  <div class="doc-section">
+    <h2>7. Age requirement</h2>
+    <p>
+      Enkrateia is for adults 18 and older. If you are under 18, do not use this app. We do not knowingly
+      collect data from anyone under 18. If we become aware that a user is under 18, we will delete their
+      account promptly.
+    </p>
+  </div>
+
+  <!-- 8. Changes -->
+  <div class="doc-section">
+    <h2>8. Changes to this policy</h2>
+    <p>
+      If we make material changes, we'll notify you via email and show the updated policy in the app before
+      it takes effect. You can always find the current version at this URL.
+    </p>
+  </div>
+
+  <!-- 9. Contact -->
+  <div class="doc-section">
+    <h2>9. Contact</h2>
+    <div class="contact-box">
+      <p>For privacy questions and data requests:<br>
+        <a href="mailto:privacy@enkrateia.app">privacy@enkrateia.app</a>
+      </p>
+      <p>For support:<br>
+        <a href="mailto:support@enkrateia.app">support@enkrateia.app</a>
+      </p>
+      <p style="font-size:12px;color:var(--text-2);margin-top:14px;">
+        Enkrateia Privacy Policy · Version 1.0 · Effective April 26, 2026<br>
+        Native Group LLC
+      </p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="mailto:support@enkrateia.app">support@enkrateia.app</a>
+  </div>
+  <p class="copy">© 2026 Native Group LLC. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
