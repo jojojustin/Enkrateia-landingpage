@@ -789,10 +789,10 @@
         <circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-opacity=".35"/>
         <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      You're on the list. One email at launch.
+      You're on the list. Check your inbox for confirmation.
     </div>
     <p id="wl1-msg" style="display:none;margin-top:10px;font-size:12px;color:#FFB040;"></p>
-    <p class="hero-meta">Free to download · Lifetime access available · iOS only</p>
+    <p class="hero-meta">Immediate confirmation email + one launch email · iOS only</p>
 
     <!-- Phase strip -->
     <div class="ps" aria-label="The three program phases">
@@ -1009,7 +1009,7 @@
       Enkrateia opens Summer 2026. Founding members get lifetime access and priority onboarding.
     </p>
     <p class="sec-p" style="margin:0 auto 32px;font-size:14px;color:var(--text-2);">
-      One email at launch. No drip campaigns. No noise.
+      Confirmation now, plus one launch email. No drip campaigns. No noise.
     </p>
     <form class="wl-form" id="wl2" novalidate style="margin:0 auto;">
       <input type="email" class="wl-input" id="wl2-e"
@@ -1024,7 +1024,7 @@
         <circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-opacity=".35"/>
         <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      You're on the list. One email at launch.
+      You're on the list. Check your inbox for confirmation.
     </div>
     <p id="wl2-msg" style="display:none;margin-top:10px;font-size:12px;color:#FFB040;text-align:center;"></p>
   </div>
@@ -1059,6 +1059,8 @@
     gaMeasurementId: '',
   };
   const ANALYTICS_CONSENT_KEY = 'enkrateia_analytics_consent_v1';
+  // Used by backend anti-bot timing check. Must be set before submit, not at click time.
+  const FORM_RENDERED_AT = Date.now();
 
   /* Nav ink on scroll */
   const nav = document.getElementById('nav');
@@ -1112,6 +1114,7 @@
     if (!form) return;
     form.addEventListener('submit', e => {
       e.preventDefault();
+      if (form.dataset.submitting === '1') return;
       if (msg) { msg.style.display = 'none'; msg.textContent = ''; }
       const v = email.value.trim();
       if (!v || !v.includes('@')) {
@@ -1133,6 +1136,7 @@
       }
 
       const submitButton = form.querySelector('button[type="submit"]');
+      form.dataset.submitting = '1';
       if (submitButton) submitButton.disabled = true;
       fetch(WAITLIST_ENDPOINT, {
         method: 'POST',
@@ -1141,7 +1145,7 @@
           email: v,
           source: formId,
           company: honeypot ? honeypot.value : '',
-          submitted_at: Date.now(),
+          submitted_at: FORM_RENDERED_AT,
           metadata: { page: 'landing', ts: new Date().toISOString() },
         }),
       })
@@ -1181,6 +1185,7 @@
           }
         })
         .finally(() => {
+          form.dataset.submitting = '0';
           if (submitButton) submitButton.disabled = false;
         });
     });
