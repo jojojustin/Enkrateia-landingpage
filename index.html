@@ -855,15 +855,14 @@
         <div class="stat-label">escalating phases,<br>each harder differently</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num" style="color:var(--p3)">40%</div>
-        <div class="stat-label">reduction in impulsive use<br>from one daily question<sup>*</sup></div>
+        <div class="stat-num" style="color:var(--p3)">Daily</div>
+        <div class="stat-label">intentional choice interrupts<br>automatic scroll behavior</div>
       </div>
       <div class="stat-item">
         <div class="stat-num" style="color:var(--p1)">Day 14</div>
         <div class="stat-label">when most people quit.<br>You won't.</div>
       </div>
     </div>
-    <p style="font-size:11px;color:var(--text-2);margin-top:10px;text-align:right;">* Lally et al., 2010. Intentionality effect on impulse behavior.</p>
   </div>
 </section>
 
@@ -889,7 +888,7 @@
           Phase 2 · Days 31–60
         </div>
         <h3 style="color:var(--p2)">Build.</h3>
-        <p>Every morning you answer one question: do I want access today? Research shows adding this single deliberate moment reduces impulsive use by 40%. You're restoring the agency compulsion removes.</p>
+        <p>Every morning you answer one question: do I want access today? Research on habits and intentionality shows that deliberate choice can interrupt automatic behavior loops. You're restoring the agency compulsion removes.</p>
       </div>
       <div class="ph p3">
         <div class="ph-lbl" style="color:var(--p3)">
@@ -1157,7 +1156,14 @@
               msg.style.color = '#FFB040';
               msg.style.display = 'block';
             } else if (msg && payload && payload.error) {
-              msg.textContent = String(payload.error);
+              const backendError = String(payload.error || '').toLowerCase();
+              if (backendError === 'rejected') {
+                msg.textContent = 'Submission blocked by anti-spam checks. Please wait a moment and try again.';
+              } else if (backendError === 'invalid email') {
+                msg.textContent = 'Please enter a valid email address.';
+              } else {
+                msg.textContent = 'Could not join right now. Please retry in a moment.';
+              }
               msg.style.color = '#FF6060';
               msg.style.display = 'block';
             } else {
