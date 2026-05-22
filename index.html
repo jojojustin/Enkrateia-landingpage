@@ -53,6 +53,42 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "dateModified": "2026-05-21",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Enkrateia?",
+        "@id": "#faq-what-is-enkrateia",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enkrateia is a 90-day structured program that uses Apple's Family Controls framework to enforce social media blocking, helping users break compulsive usage patterns through three escalating phases."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Enkrateia block apps?",
+        "@id": "#faq-how-blocking-works",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enkrateia uses Apple's Family Controls API at the operating-system level. The block cannot be bypassed from inside the app; only a temporary crisis override exists."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Enkrateia available on Android?",
+        "@id": "#faq-android",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enkrateia is iOS only because it depends on Apple's Family Controls framework, which has no Android equivalent."
+        }
+      }
+    ]
+  }
+  </script>
 
   <style>
     /* ── Design tokens — match actual app constants/index.ts ─── */
@@ -73,16 +109,16 @@
       --accent-glow: rgba(106,144,255,0.14);
       --accent-halo: rgba(106,144,255,0.08);
 
-      /* Phase colors — exact from app */
-      --p1:      #FF6060;   /* Break */
-      --p2:      #FFB040;   /* Build */
-      --p3:      #60C080;   /* Control */
-      --p1-bg:   rgba(255,96,96,0.07);
-      --p2-bg:   rgba(255,176,64,0.07);
-      --p3-bg:   rgba(96,192,128,0.07);
-      --p1-bdr:  rgba(255,96,96,0.20);
-      --p2-bdr:  rgba(255,176,64,0.20);
-      --p3-bdr:  rgba(96,192,128,0.20);
+      /* Phase colors — Spectrum palette (blue → violet → purple) */
+      --p1:      #5B8FF9;   /* Break — periwinkle blue */
+      --p2:      #8B6FF9;   /* Build — blue-violet */
+      --p3:      #A855F7;   /* Control — violet */
+      --p1-bg:   rgba(91,143,249,0.07);
+      --p2-bg:   rgba(139,111,249,0.07);
+      --p3-bg:   rgba(168,85,247,0.07);
+      --p1-bdr:  rgba(91,143,249,0.20);
+      --p2-bdr:  rgba(139,111,249,0.20);
+      --p3-bdr:  rgba(168,85,247,0.20);
 
       /* CTA — warm, stands out from cool palette */
       --cta:     #F07040;
@@ -180,7 +216,7 @@
       content: '';
       width: 6px; height: 6px;
       border-radius: 50%;
-      background: var(--p3);
+      background: var(--accent);
       animation: blink 2.4s ease-in-out infinite;
     }
 
@@ -296,22 +332,15 @@
 
     /* ── Eyebrow ───────────────────────────────────────────────── */
     .eyebrow-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      display: inline-block;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: .15em;
       text-transform: uppercase;
       color: var(--accent);
+      border-top: 1.5px solid var(--accent);
+      padding-top: 7px;
       margin-bottom: 22px;
-    }
-    .eyebrow-badge .dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--p3);
-      flex-shrink: 0;
-      animation: blink 2.4s ease-in-out infinite;
     }
 
     /* ── H1 ────────────────────────────────────────────────────── */
@@ -764,10 +793,7 @@
       </div>
     </div>
 
-    <div class="eyebrow-badge">
-      <span class="dot" aria-hidden="true"></span>
-      Coming to iOS · Summer 2026
-    </div>
+    <div class="eyebrow-badge">iOS · Summer 2026</div>
 
     <h1>Reclaim your<br><span class="lit">attention.</span></h1>
 
@@ -812,6 +838,21 @@
         <div class="ps-days">Days 61–90</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ── AI Fact Bar ─────────────────────────────────────────────── -->
+<section style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 24px 0;">
+  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:20px;">
+    <p id="extraction-1" style="color:var(--text-1);font-size:13px;line-height:1.6;flex:1;min-width:240px;">
+      Enkrateia uses Apple Family Controls to block social media at the OS level across a structured 90-day program.
+    </p>
+    <p id="extraction-2" style="color:var(--text-1);font-size:13px;line-height:1.6;flex:1;min-width:240px;">
+      Phase 1 enforces abstinence, Phase 2 restores intentional choice, and Phase 3 introduces time-limited access with feedback.
+    </p>
+    <p id="extraction-3" style="color:var(--text-1);font-size:13px;line-height:1.6;flex:1;min-width:240px;">
+      Journal content is encrypted before sync using AES-256-GCM with device-secured key storage and strict access controls.
+    </p>
   </div>
 </section>
 
@@ -1143,7 +1184,8 @@
         body: JSON.stringify({
           email: v,
           source: formId,
-          company: honeypot ? honeypot.value : '',
+          // Keep honeypot field in DOM for bots, but never forward autofilled values.
+          company: '',
           submitted_at: FORM_RENDERED_AT,
           metadata: { page: 'landing', ts: new Date().toISOString() },
         }),
