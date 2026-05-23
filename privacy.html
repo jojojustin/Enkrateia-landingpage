@@ -6,6 +6,8 @@
   <title>Privacy Policy — Enkrateia</title>
   <meta name="description" content="Enkrateia Privacy Policy. We wrote it to be read, not avoided.">
   <meta name="robots" content="index, follow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; manifest-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; frame-src 'none'; upgrade-insecure-requests">
   <link rel="canonical" href="https://enkrateiaonline.com/privacy.html">
   <meta property="og:title" content="Privacy Policy — Enkrateia">
   <meta property="og:description" content="How Enkrateia handles privacy, data, and security.">
@@ -408,8 +410,8 @@
         </tr>
         <tr>
           <td>Sentry</td>
-          <td>Crash and error monitoring</td>
-          <td>Technical error reports, stripped of personally identifiable information before transmission.</td>
+          <td>Diagnostic telemetry</td>
+          <td>Sanitized technical diagnostics for reliability and abuse prevention, excluding direct personal identifiers.</td>
         </tr>
         <tr>
           <td>PostHog</td>

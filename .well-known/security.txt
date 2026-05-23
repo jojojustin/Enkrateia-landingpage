@@ -1,0 +1,7 @@
+Contact: mailto:security@enkrateiaonline.com
+Contact: mailto:support@enkrateia.app
+Preferred-Languages: en
+Canonical: https://enkrateiaonline.com/.well-known/security.txt
+Policy: https://enkrateiaonline.com/privacy.html
+Expires: 2027-05-23T00:00:00.000Z
+
