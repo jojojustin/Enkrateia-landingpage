@@ -7,7 +7,7 @@
   <meta name="description" content="A 90-day structured program to break social media's hold on your time and attention. Phase-gated blocking, daily accountability, and habit science. Coming to iOS Summer 2026.">
   <meta name="robots" content="index, follow">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; manifest-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://*.supabase.co https://app.posthog.com https://www.google-analytics.com https://region1.google-analytics.com; frame-src 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; manifest-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://*.supabase.co https://app.posthog.com https://www.google-analytics.com https://region1.google-analytics.com; frame-src 'none'; upgrade-insecure-requests">
   <link rel="canonical" href="https://enkrateiaonline.com/">
   <meta property="og:title" content="Enkrateia — Reclaim Your Attention">
   <meta property="og:description" content="A 90-day structured program to break free from social media and rebuild your relationship with technology.">
@@ -20,7 +20,8 @@
   <meta name="twitter:title" content="Enkrateia — Reclaim Your Attention">
   <meta name="twitter:description" content="A 90-day structured program to break free from social media and rebuild your relationship with technology.">
   <meta name="twitter:image" content="https://enkrateiaonline.com/logo_clean.png">
-  <meta name="theme-color" content="#0A0A0F">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0A0A0F">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
@@ -846,7 +847,7 @@
       Phase 1 enforces abstinence, Phase 2 restores intentional choice, and Phase 3 introduces time-limited access with feedback.
     </p>
     <p id="extraction-3" style="color:var(--text-1);font-size:13px;line-height:1.6;flex:1;min-width:240px;">
-      Journal content is encrypted before sync using AES-256-GCM with device-secured key storage and strict access controls.
+      Your journal entries are yours alone — private, backed up, and accessible only to you.
     </p>
   </div>
 </section>
@@ -998,8 +999,8 @@
             <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="#6A90FF" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
         </div>
-        <h4>End-to-end journal encryption</h4>
-        <p>Journal entries are encrypted on your device using AES-256-GCM before transmission. The key lives in your iPhone's Secure Enclave. We cannot read your journal. Nobody can.</p>
+        <h4>Your journal stays private</h4>
+        <p>What you write is stored securely and accessible only to you. We back it up so you never lose your entries — but only you can read them. We can't. Nobody can.</p>
       </div>
       <div class="pc">
         <div class="pc-ico" aria-hidden="true">
@@ -1076,167 +1077,14 @@
       <nav class="ft-links" aria-label="Footer links">
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Service</a>
-        <a href="mailto:support@enkrateia.app">support@enkrateia.app</a>
+    <a href="support.html">Support</a>
+        <a href="mailto:support@enkrateiaonline.com">support@enkrateiaonline.com</a>
       </nav>
     </div>
   </div>
 </footer>
 
-<script>
-  /*
-    Supabase Edge Function endpoint:
-    https://<project-ref>.functions.supabase.co/waitlist-signup
-  */
-  const WAITLIST_ENDPOINT = 'https://jtlhhomzkfiufyoitpfg.functions.supabase.co/waitlist-signup';
-  const ANALYTICS = {
-    posthogKey: '',
-    posthogHost: 'https://app.posthog.com',
-    gaMeasurementId: '',
-  };
-  const ANALYTICS_CONSENT_KEY = 'enkrateia_analytics_consent_v1';
-  // Used by backend anti-bot timing check. Must be set before submit, not at click time.
-  const FORM_RENDERED_AT = Date.now();
-
-  /* Nav ink on scroll */
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('ink', window.scrollY > 20);
-  }, { passive: true });
-
-  function initAnalytics() {
-    if (ANALYTICS.posthogKey) {
-      !function(t,e){var o,n,p,r;e.__SV=1,window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split('.');2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement('script')).type='text/javascript',p.crossOrigin='anonymous',p.async=!0,p.src=s.api_host.replace('.i.posthog.com','-assets.i.posthog.com')+'/static/array.js',(r=t.getElementsByTagName('script')[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a='posthog',u.people=u.people||[],u.toString=function(t){var e='posthog';return'posthog'!==a&&(e+='.'+a),t||(e+=' (stub)'),e},u.people.toString=function(){return u.toString(1)+'.people (stub)'},o='init capture register register_once unregister unregister_once identify alias set_config reset opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing start_batch_senders stop_batch_senders'.split(' '),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1}(document,window.posthog||[]);
-      posthog.init(ANALYTICS.posthogKey, { api_host: ANALYTICS.posthogHost, person_profiles: 'identified_only' });
-      posthog.capture('landing_page_viewed');
-    }
-
-    if (ANALYTICS.gaMeasurementId) {
-      const gtagScript = document.createElement('script');
-      gtagScript.async = true;
-      gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${ANALYTICS.gaMeasurementId}`;
-      document.head.appendChild(gtagScript);
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){ window.dataLayer.push(arguments); }
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', ANALYTICS.gaMeasurementId, { anonymize_ip: true });
-    }
-  }
-
-  function setConsent(enabled) {
-    localStorage.setItem(ANALYTICS_CONSENT_KEY, enabled ? 'yes' : 'no');
-    const banner = document.getElementById('analytics-consent');
-    if (banner) banner.style.display = 'none';
-    if (enabled) initAnalytics();
-  }
-
-  const savedConsent = localStorage.getItem(ANALYTICS_CONSENT_KEY);
-  if (savedConsent === 'yes') initAnalytics();
-  document.addEventListener('DOMContentLoaded', () => {
-    if (!savedConsent) {
-      const banner = document.getElementById('analytics-consent');
-      if (banner) banner.style.display = 'block';
-    }
-  });
-
-  /* Waitlist handler */
-  function bind(formId, emailId, okId, honeypotId, messageId) {
-    const form  = document.getElementById(formId);
-    const email = document.getElementById(emailId);
-    const ok    = document.getElementById(okId);
-    const honeypot = document.getElementById(honeypotId);
-    const msg = document.getElementById(messageId);
-    if (!form) return;
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      if (form.dataset.submitting === '1') return;
-      if (msg) { msg.style.display = 'none'; msg.textContent = ''; }
-      const v = email.value.trim();
-      if (!v || !v.includes('@')) {
-        email.focus();
-        email.style.borderColor = '#FF6060';
-        email.style.boxShadow   = '0 0 0 3px rgba(255,96,96,.14)';
-        if (msg) {
-          msg.textContent = 'Please enter a valid email.';
-          msg.style.color = '#FF6060';
-          msg.style.display = 'block';
-        }
-        setTimeout(() => { email.style.borderColor = ''; email.style.boxShadow = ''; }, 1800);
-        return;
-      }
-      if (!WAITLIST_ENDPOINT) {
-        form.style.display = 'none';
-        ok.style.display   = 'flex';
-        return;
-      }
-
-      const submitButton = form.querySelector('button[type="submit"]');
-      form.dataset.submitting = '1';
-      if (submitButton) submitButton.disabled = true;
-      fetch(WAITLIST_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: v,
-          source: formId,
-          // Keep honeypot field in DOM for bots, but never forward autofilled values.
-          company: '',
-          submitted_at: FORM_RENDERED_AT,
-          metadata: { page: 'landing', ts: new Date().toISOString() },
-        }),
-      })
-        .then(async (res) => {
-          const payload = await res.json().catch(() => ({}));
-          if (!res.ok) {
-            if (msg && res.status === 429) {
-              msg.textContent = 'Too many attempts from this network. Please wait 15 minutes and retry.';
-              msg.style.color = '#FFB040';
-              msg.style.display = 'block';
-            } else if (msg && payload && payload.error) {
-              const backendError = String(payload.error || '').toLowerCase();
-              if (backendError === 'rejected') {
-                msg.textContent = 'Submission blocked by anti-spam checks. Please wait a moment and try again.';
-              } else if (backendError === 'invalid email') {
-                msg.textContent = 'Please enter a valid email address.';
-              } else {
-                msg.textContent = 'Could not join right now. Please retry in a moment.';
-              }
-              msg.style.color = '#FF6060';
-              msg.style.display = 'block';
-            } else {
-              throw new Error('Waitlist submit failed');
-            }
-            return;
-          }
-          form.style.display = 'none';
-          ok.style.display = 'flex';
-          if (window.posthog) {
-            window.posthog.capture('waitlist_signup', { source: formId });
-          }
-          if (window.gtag) {
-            window.gtag('event', 'waitlist_signup', { source: formId });
-          }
-        })
-        .catch(() => {
-          email.focus();
-          email.style.borderColor = '#FF6060';
-          email.style.boxShadow   = '0 0 0 3px rgba(255,96,96,.14)';
-          if (msg) {
-            msg.textContent = 'We could not submit right now. Please try again.';
-            msg.style.color = '#FF6060';
-            msg.style.display = 'block';
-          }
-        })
-        .finally(() => {
-          form.dataset.submitting = '0';
-          if (submitButton) submitButton.disabled = false;
-        });
-    });
-  }
-  bind('wl1','wl1-e','wl1-ok','wl1-company','wl1-msg');
-  bind('wl2','wl2-e','wl2-ok','wl2-company','wl2-msg');
-
-</script>
+<script src="/assets/js/main.js" defer></script>
 
 <div id="analytics-consent" style="display:none;position:fixed;left:16px;right:16px;bottom:16px;z-index:120;background:#111120;border:1px solid #252540;border-radius:12px;padding:14px;">
   <p style="font-size:13px;color:#E0E0F0;line-height:1.5;margin-bottom:10px;">

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — Enkrateia</title>
+  <meta name="description" content="Get help with Enkrateia — contact support, FAQs, and account help.">
+  <meta name="robots" content="index, follow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; manifest-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; frame-src 'none'; upgrade-insecure-requests">
+  <link rel="canonical" href="https://enkrateiaonline.com/support.html">
+  <meta property="og:title" content="Support — Enkrateia">
+  <meta property="og:description" content="Get help with Enkrateia — contact support, FAQs, and account help.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://enkrateiaonline.com/support.html">
+  <meta property="og:site_name" content="Enkrateia">
+  <meta name="twitter:card" content="summary">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#07090F">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:       #07090F;
+      --bg-1:     #0C1220;
+      --bg-2:     #111C30;
+      --border:   #1A2840;
+      --border-1: #243858;
+      --text:     #EFF3FF;
+      --text-1:   #8A9DC4;
+      --text-2:   #4A5C7A;
+      --accent:   #5C85F0;
+      --accent-lt:#7AADFF;
+      --p1:       #EF5050;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-w: 720px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--accent-lt); }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(7,9,15,.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 28px;
+      z-index: 10;
+    }
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-home {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+    }
+    .nav-icon {
+      filter:
+        grayscale(1) sepia(1) hue-rotate(192deg) saturate(4.5) brightness(1.12)
+        drop-shadow(0 0 8px rgba(106,144,255,0.90));
+      flex-shrink: 0;
+    }
+    .nav-icon-clip {
+      width: 28px;
+      height: 28px;
+      border-radius: 22%;
+      overflow: hidden;
+    }
+    .nav-icon-clip img {
+      width: 132%;
+      height: 132%;
+      margin: -16% 0 0 -16%;
+      display: block;
+      object-fit: cover;
+    }
+    .nav-home-wm {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      color: var(--text);
+    }
+    .nav-back {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-2);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-back:hover { color: var(--text-1); }
+
+    .page-wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 56px 28px 96px;
+    }
+    .page-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .page-title {
+      font-size: clamp(28px,5vw,42px);
+      font-weight: 900;
+      letter-spacing: -.025em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .page-effective {
+      font-size: 12px;
+      color: var(--text-2);
+      margin-bottom: 28px;
+    }
+    .page-intro {
+      font-size: 15px;
+      color: var(--text-1);
+      line-height: 1.75;
+      padding: 20px 24px;
+      background: var(--bg-1);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 10px;
+      margin-bottom: 48px;
+    }
+
+    .doc-section {
+      margin-bottom: 44px;
+    }
+    .doc-section h2 {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      color: var(--text);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .doc-section p {
+      font-size: 14px;
+      color: var(--text-1);
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .doc-section p:last-child { margin-bottom: 0; }
+
+    .sub-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 20px 0 10px;
+    }
+
+    .bullet-list {
+      list-style: none;
+      margin: 0 0 14px;
+    }
+    .bullet-list li {
+      display: flex;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-1);
+      line-height: 1.68;
+      padding: 4px 0;
+    }
+    .bullet-list li::before {
+      content: '·';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .callout {
+      background: var(--bg-1);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--p1);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-size: 13px;
+      color: var(--text-1);
+      line-height: 1.7;
+    }
+    .callout strong { color: var(--text); }
+
+    .contact-box {
+      background: var(--bg-1);
+      border: 1px solid var(--border-1);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .contact-box p { margin-bottom: 8px; }
+    .contact-box p:last-child { margin-bottom: 0; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px;
+      text-align: center;
+    }
+    footer .links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    footer .links a {
+      font-size: 12px;
+      color: var(--text-2);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    footer .links a:hover { color: var(--text-1); }
+    footer .copy { font-size: 11px; color: var(--text-2); }
+
+    @media (max-width: 600px) {
+      .page-wrap { padding: 40px 20px 72px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-home" aria-label="Enkrateia home">
+      <div class="nav-icon">
+        <div class="nav-icon-clip">
+          <img src="logo.png" alt="" width="37" height="37">
+        </div>
+      </div>
+      <span class="nav-home-wm">ENKRATEIA</span>
+    </a>
+    <a href="index.html" class="nav-back">← Back to site</a>
+  </div>
+</nav>
+
+<main class="page-wrap">
+
+  <p class="page-label">Help</p>
+  <h1 class="page-title">Support</h1>
+  <p class="page-effective">Enkrateia · operated by Native Group LLC</p>
+
+  <div class="page-intro">
+    Need a hand with Enkrateia? Email us and a real person will get back to you. We read
+    every message and aim to reply within <strong>1–2 business days</strong>.
+  </div>
+
+  <div class="doc-section">
+    <h2>Contact us</h2>
+    <div class="contact-box">
+      <p><strong>Email:</strong> <a href="mailto:support@enkrateiaonline.com?subject=Enkrateia%20support">support@enkrateiaonline.com</a></p>
+      <p><strong>Privacy &amp; data requests:</strong> <a href="mailto:privacy@enkrateiaonline.com?subject=Privacy%20request">privacy@enkrateiaonline.com</a></p>
+      <p><strong>Response time:</strong> within 1–2 business days.</p>
+    </div>
+    <p>To help us resolve things faster, include your device model, your iOS version, and a short
+      description of what happened (a screenshot helps).</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>Common questions</h2>
+
+    <p class="sub-label">Apps or websites aren’t being blocked</p>
+    <p>Enkrateia blocks through Apple’s Screen Time. Make sure you granted
+      <strong>Screen Time access</strong> when prompted, then open the app and re-select the apps
+      you want blocked (Onboarding → “Select apps,” or Settings). Blocking only works on a real
+      device, not the Simulator.</p>
+
+    <p class="sub-label">I can’t delete an app</p>
+    <p>If you turned on <strong>“Prevent app deletion”</strong>, that lock applies device-wide while a
+      program is active. It’s optional and off by default — turn it off any time in
+      <strong>Settings → Blocking</strong>, and you’ll be able to delete apps normally again.</p>
+
+    <p class="sub-label">Subscriptions, purchases &amp; refunds</p>
+    <p>Enkrateia is a one-time purchase with lifetime access, billed through your Apple ID. Purchases,
+      billing, and refund requests are handled by Apple. To request a refund, visit
+      <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>.
+      To restore a purchase on a new device, use <strong>Settings → Restore purchases</strong>.</p>
+
+    <p class="sub-label">Delete my account and data</p>
+    <p>Open <strong>Settings → Delete account</strong>. This permanently removes your account and all
+      associated data from our servers. You can also email
+      <a href="mailto:privacy@enkrateiaonline.com?subject=Account%20deletion">privacy@enkrateiaonline.com</a>
+      and we’ll confirm deletion by email.</p>
+
+    <p class="sub-label">Accountability partner emails</p>
+    <p>If you added a partner, they receive a small number of program milestone emails. To stop them,
+      remove the partner in the app or email us and we’ll remove them within 10 business days.</p>
+
+    <p class="sub-label">My journal entries</p>
+    <p>Journal entries are encrypted on your device and the key never leaves it. That means we can’t
+      read them — and if you lose or wipe your device, encrypted entries can’t be recovered.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>Privacy &amp; your data</h2>
+    <p>For details on what we collect and how it’s handled, see our
+      <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Service</a>.</p>
+    <div class="contact-box">
+      <p><strong>Native Group LLC</strong></p>
+      <p>Registered in Wyoming, USA</p>
+      <p>General support: <a href="mailto:support@enkrateiaonline.com">support@enkrateiaonline.com</a></p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="mailto:support@enkrateiaonline.com">support@enkrateiaonline.com</a>
+  </div>
+  <p class="copy">© 2026 Native Group LLC. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

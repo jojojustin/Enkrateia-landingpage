@@ -1,6 +1,31 @@
-# Enkrateia
+# Enkrateia — llms.txt
+# Last updated: 2026-05-21
 
-Official website for Enkrateia, an iOS-first 90-day program to reduce compulsive social media use with phase-gated blocking and daily accountability.
+## Product
+Enkrateia is a 90-day iOS app for reducing compulsive social media use.
+It uses Apple Family Controls for OS-level blocking and phase-based behavior change.
+Platform: iOS only.
+
+## Pricing
+- Founding member pre-order access: $21 one-time (opening sale)
+- Standard launch pricing: pending final App Store configuration
+
+## Program structure
+- Phase 1 (Days 1-30): Full blocking, no standard unlock path
+- Phase 2 (Days 31-60): Daily intentional access choice gate
+- Phase 3 (Days 61-90): Time-limited access with progress feedback
+
+## Core features
+- Morning declaration and evening check-in
+- Craving curve, hour heatmap, and weekly report card
+- Accountability partner notifications
+- Day 1 future-self letter delivered at graduation
+
+## Privacy and security
+- Journal encryption: AES-256-GCM
+- Per-device encryption key stored in iOS secure storage
+- Blocked app names are not uploaded by the native Family Controls pipeline
+- User account deletion is available in-app
 
 ## Canonical URLs
 - https://enkrateiaonline.com/
@@ -8,5 +33,5 @@ Official website for Enkrateia, an iOS-first 90-day program to reduce compulsive
 - https://enkrateiaonline.com/terms.html
 
 ## Contact
-- support@enkrateia.app
-- privacy@enkrateia.app
+- support@enkrateiaonline.com
+- privacy@enkrateiaonline.com
