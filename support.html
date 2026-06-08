@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Support — Enkrateia</title>
-  <meta name="description" content="Get help with Enkrateia — contact support, FAQs, and account help.">
+  <meta name="description" content="Get help with Enkrateia — how the app works, contact support, FAQs, and account help.">
   <meta name="robots" content="index, follow">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; manifest-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; frame-src 'none'; upgrade-insecure-requests">
   <link rel="canonical" href="https://enkrateiaonline.com/support.html">
   <meta property="og:title" content="Support — Enkrateia">
-  <meta property="og:description" content="Get help with Enkrateia — contact support, FAQs, and account help.">
+  <meta property="og:description" content="Get help with Enkrateia — how the app works, contact support, FAQs, and account help.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://enkrateiaonline.com/support.html">
   <meta property="og:site_name" content="Enkrateia">
@@ -38,6 +38,8 @@
       --accent:   #5C85F0;
       --accent-lt:#7AADFF;
       --p1:       #EF5050;
+      --p2:       #5C85F0;
+      --p3:       #45C4B0;
       --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       --max-w: 720px;
     }
@@ -145,11 +147,32 @@
       border: 1px solid var(--border);
       border-left: 3px solid var(--accent);
       border-radius: 10px;
+      margin-bottom: 40px;
+    }
+
+    /* Quick jump links */
+    .toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
       margin-bottom: 48px;
     }
+    .toc a {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-1);
+      text-decoration: none;
+      padding: 7px 13px;
+      background: var(--bg-1);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      transition: border-color .2s, color .2s;
+    }
+    .toc a:hover { color: var(--text); border-color: var(--border-1); }
 
     .doc-section {
       margin-bottom: 44px;
+      scroll-margin-top: 72px;
     }
     .doc-section h2 {
       font-size: 18px;
@@ -174,7 +197,7 @@
       letter-spacing: .14em;
       text-transform: uppercase;
       color: var(--accent);
-      margin: 20px 0 10px;
+      margin: 22px 0 10px;
     }
 
     .bullet-list {
@@ -195,6 +218,20 @@
       font-weight: 700;
       flex-shrink: 0;
     }
+
+    /* Phase chips reused from the app's language */
+    .phase-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 6px 0 16px; }
+    .phase-pill {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid;
+    }
+    .phase-pill.p1 { color: var(--p1); border-color: rgba(239,80,80,.4);  background: rgba(239,80,80,.09); }
+    .phase-pill.p2 { color: var(--p2); border-color: rgba(92,133,240,.4); background: rgba(92,133,240,.09); }
+    .phase-pill.p3 { color: var(--p3); border-color: rgba(69,196,176,.4); background: rgba(69,196,176,.09); }
 
     .callout {
       background: var(--bg-1);
@@ -268,10 +305,23 @@
 
   <div class="page-intro">
     Need a hand with Enkrateia? Email us and a real person will get back to you. We read
-    every message and aim to reply within <strong>1–2 business days</strong>.
+    every message and aim to reply within <strong>1–2 business days</strong>. If you're new,
+    the <a href="#how-it-works">How the app works</a> section below explains the parts people
+    ask about most.
   </div>
 
-  <div class="doc-section">
+  <nav class="toc" aria-label="Jump to a topic">
+    <a href="#contact">Contact</a>
+    <a href="#how-it-works">How it works</a>
+    <a href="#blocking">Blocking &amp; “Need an app?”</a>
+    <a href="#urge-surf">Urge surfing</a>
+    <a href="#journal">Journaling &amp; letters</a>
+    <a href="#partner">Partner lock</a>
+    <a href="#account">Billing &amp; account</a>
+    <a href="#privacy">Privacy</a>
+  </nav>
+
+  <div class="doc-section" id="contact">
     <h2>Contact us</h2>
     <div class="contact-box">
       <p><strong>Email:</strong> <a href="mailto:support@enkrateiaonline.com?subject=Enkrateia%20support">support@enkrateiaonline.com</a></p>
@@ -282,8 +332,27 @@
       description of what happened (a screenshot helps).</p>
   </div>
 
-  <div class="doc-section">
-    <h2>Common questions</h2>
+  <div class="doc-section" id="how-it-works">
+    <h2>How the app works</h2>
+    <p>Enkrateia is a <strong>90-day program</strong> that helps you take back control of the apps
+      that pull at you. It runs in three phases, then becomes yours to keep in Maintenance Mode.</p>
+    <div class="phase-row">
+      <span class="phase-pill p1">Break · Days 1–30</span>
+      <span class="phase-pill p2">Build · Days 31–60</span>
+      <span class="phase-pill p3">Control · Days 61–90</span>
+    </div>
+    <ul class="bullet-list">
+      <li><strong>Break</strong> — the apps you chose stay fully blocked. Your only job is to hold the line.</li>
+      <li><strong>Build</strong> — each morning you make a deliberate choice: keep blocking, or unlock with intention.</li>
+      <li><strong>Control</strong> — you set a daily time allowance; apps unlock until you hit it, then re-block automatically.</li>
+      <li><strong>Maintenance</strong> — after Day 90 there's no streak to protect. You keep the tools and set your own daily limit.</li>
+    </ul>
+    <p>Your <strong>dashboard</strong> is home base: it shows the day you're on, your phase, a progress
+      bar, today's reflection, and quick access to everything below.</p>
+  </div>
+
+  <div class="doc-section" id="blocking">
+    <h2>Blocking, and the “Need an app?” unlock</h2>
 
     <p class="sub-label">Apps or websites aren’t being blocked</p>
     <p>Enkrateia blocks through Apple’s Screen Time. Make sure you granted
@@ -291,33 +360,90 @@
       you want blocked (Onboarding → “Select apps,” or Settings). Blocking only works on a real
       device, not the Simulator.</p>
 
-    <p class="sub-label">I can’t delete an app</p>
-    <p>If you turned on <strong>“Prevent app deletion”</strong>, that lock applies device-wide while a
-      program is active. It’s optional and off by default — turn it off any time in
-      <strong>Settings → Blocking</strong>, and you’ll be able to delete apps normally again.</p>
+    <p class="sub-label">What “Need an app?” / the unlock does</p>
+    <p>Life happens — sometimes you genuinely need a blocked app for a minute. The
+      <strong>Unlock an app</strong> option (the quiet link at the bottom of the dashboard) opens a
+      short, deliberate flow: it asks you to pause and breathe, then hold a button to confirm. When you
+      do, your apps open for <strong>30 minutes</strong> and then <strong>re-block automatically</strong> —
+      even if you close Enkrateia. There's a live countdown on the dashboard, and a
+      <strong>“Restore blocking now”</strong> button if you finish early.</p>
+    <div class="callout" style="border-left-color: var(--p2);">
+      It isn’t an off switch — it’s a speed bump. You get a limited number of overrides per phase, and
+      if you added a partner, they’re notified when you use one. That friction is the point.
+    </div>
+
+    <p class="sub-label">I can’t delete the Enkrateia app</p>
+    <p>That’s by design, and only if you set it up that way. The strongest way to stop the
+      “just delete the app to bypass it” loop is to <strong>not hold the key yourself</strong>: during
+      setup you can have an accountability partner set the device’s <strong>Screen Time passcode</strong>
+      and turn off “Deleting Apps.” With that in place, the app can’t be removed without your partner’s
+      passcode. To undo it, open <strong>Settings → Screen Time</strong> on the device and enter that
+      passcode (your partner has it). Enkrateia never sets a device-wide deletion lock on its own.</p>
+  </div>
+
+  <div class="doc-section" id="urge-surf">
+    <h2>Urge surfing — riding out a craving</h2>
+    <p>A craving feels like it will keep rising until you give in. It doesn’t — urges crest and fall like
+      a wave, usually within a few minutes. <strong>Urge surfing</strong> is a guided
+      ~90-second exercise that walks you through noticing the urge, breathing, and letting it pass
+      without acting on it. You’ll find it on the dashboard as <strong>“Feeling the urge? Ride it out.”</strong>
+      Use it the moment you feel the pull — it’s the cheapest, fastest tool in the app.</p>
+  </div>
+
+  <div class="doc-section" id="journal">
+    <h2>Journaling &amp; the letter to your future self</h2>
+
+    <p class="sub-label">Daily reflection (journaling)</p>
+    <p>Once a day the dashboard offers a <strong>Daily reflection</strong> — a under-a-minute check-in on
+      how the day went. It builds your streak and powers the insights on your Progress tab. Entries are
+      <strong>encrypted on your device</strong>; the key never leaves it, so not even we can read them.</p>
+
+    <p class="sub-label">Letter to your future self</p>
+    <p>Early in the program you can write a <strong>sealed letter</strong> to the version of you on a future
+      day (Day 14 is the suggested one — historically a hard stretch). You pick the delivery day, write it,
+      and seal it. On that day the letter <strong>arrives back on your dashboard</strong> (and as a
+      notification) for you to open. It’s a small message from past-you to future-you, exactly when you’re
+      most likely to need it.</p>
+    <div class="callout">
+      Encrypted entries and letters live on your device. If you lose or wipe the device, they
+      <strong>can’t be recovered</strong> — that’s the trade-off for true privacy.
+    </div>
+  </div>
+
+  <div class="doc-section" id="partner">
+    <h2>Accountability partner &amp; the Screen Time lock</h2>
+    <p>Adding a partner is optional. If you do, they receive a small number of emails — program
+      <strong>milestones</strong>, <strong>missed check-in</strong> nudges, and a <strong>crisis/override</strong>
+      alert — and <strong>never</strong> your journal. To stop them, remove the partner in the app or email
+      us and we’ll remove them within 10 business days.</p>
+    <p>For the strongest commitment, your partner can set the device’s <strong>Screen Time passcode</strong>
+      during onboarding (or later, from Settings). That’s what makes the app un-deletable on a whim — see
+      <a href="#blocking">“I can’t delete the Enkrateia app”</a> above. No partner? You can skip it and still
+      use the whole program; you can also turn the lock on later when you have someone.</p>
+  </div>
+
+  <div class="doc-section" id="account">
+    <h2>Billing &amp; account</h2>
 
     <p class="sub-label">Subscriptions, purchases &amp; refunds</p>
     <p>Enkrateia is a one-time purchase with lifetime access, billed through your Apple ID. Purchases,
       billing, and refund requests are handled by Apple. To request a refund, visit
       <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>.
-      To restore a purchase on a new device, use <strong>Settings → Restore purchases</strong>.</p>
+      To restore a purchase on a new device, use <strong>Restore</strong> on the paywall or
+      <strong>Settings → Restore purchases</strong>.</p>
+
+    <p class="sub-label">Signing in</p>
+    <p>You can sign in with email or with Apple/Google. If a sign-in link or code isn’t arriving, check your
+      spam folder and confirm you’re using the same address you signed up with — then email us and we’ll help.</p>
 
     <p class="sub-label">Delete my account and data</p>
     <p>Open <strong>Settings → Delete account</strong>. This permanently removes your account and all
       associated data from our servers. You can also email
       <a href="mailto:privacy@enkrateiaonline.com?subject=Account%20deletion">privacy@enkrateiaonline.com</a>
       and we’ll confirm deletion by email.</p>
-
-    <p class="sub-label">Accountability partner emails</p>
-    <p>If you added a partner, they receive a small number of program milestone emails. To stop them,
-      remove the partner in the app or email us and we’ll remove them within 10 business days.</p>
-
-    <p class="sub-label">My journal entries</p>
-    <p>Journal entries are encrypted on your device and the key never leaves it. That means we can’t
-      read them — and if you lose or wipe your device, encrypted entries can’t be recovered.</p>
   </div>
 
-  <div class="doc-section">
+  <div class="doc-section" id="privacy">
     <h2>Privacy &amp; your data</h2>
     <p>For details on what we collect and how it’s handled, see our
       <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Service</a>.</p>
