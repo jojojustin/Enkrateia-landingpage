@@ -1,0 +1,5 @@
+
+# Build / tooling artifacts (do not publish on the landing site)
+.expo/
+supabase/.temp/
+.DS_Store
