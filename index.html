@@ -7,7 +7,7 @@
   <meta name="description" content="A 90-day structured program to break social media's hold on your time and attention. Phase-gated blocking, daily accountability, and habit science. Pre-order now on the App Store for iOS.">
   <meta name="robots" content="index, follow">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; manifest-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://*.supabase.co https://app.posthog.com https://www.google-analytics.com https://region1.google-analytics.com; frame-src 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; manifest-src 'self'; script-src 'self' https://*.posthog.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://*.supabase.co https://*.posthog.com https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com; frame-src 'none'; upgrade-insecure-requests">
   <link rel="canonical" href="https://enkrateiaonline.com/">
   <meta property="og:title" content="Enkrateia — Reclaim Your Attention · Pre-order on the App Store">
   <meta property="og:description" content="A 90-day structured program to break free from social media and rebuild your relationship with technology. Pre-order now on the App Store.">
@@ -137,7 +137,12 @@
 
     /* ── Reset ─────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; scroll-behavior: smooth; }
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
     body {
       font-family: var(--font);
       background: var(--bg);
@@ -145,6 +150,7 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+      -webkit-tap-highlight-color: rgba(106,144,255,.18);
     }
     a { color: inherit; text-decoration: none; }
     svg { display: block; }
@@ -853,15 +859,38 @@
       .nav-links { display: none; }
     }
     @media (max-width: 680px) {
-      :root { --py: 64px; }
+      :root { --py: 56px; }
+      .wrap { padding: 0 20px; }
       .steps { grid-template-columns: 1fr; }
-      .step  { border-right: none; }
+      .step  { border-right: none; padding: 28px 24px; }
       .step:nth-child(3) { border-bottom: 1px solid var(--border); }
       .wl-form { flex-direction: column; }
+      .wl-btn  { width: 100%; }
       .ps  { display: none; }
       .ft-row { flex-direction: column; align-items: flex-start; }
+
+      /* Tighter hero on phones */
+      .hero { min-height: auto; padding: 104px 20px 64px; }
+      .hand-glow { width: 168px; margin-bottom: 30px; }
+      .hand-shell { width: 168px; height: 168px; }
+      .hero-sub { font-size: 15.5px; margin-bottom: 30px; }
+
+      /* Edge-to-edge swipeable gallery with peek */
+      .shots {
+        margin: 36px -20px 0;
+        padding: 8px 20px 18px;
+        gap: 14px;
+      }
+      .shot { width: 200px; }
+
+      /* Comfier tap targets */
+      .nav-store { padding: 7px 13px; }
+      .alt-wl summary { padding: 6px 0; }
     }
-    @media (max-width: 400px) { .hero h1 { font-size: 38px; } }
+    @media (max-width: 400px) {
+      .hero h1 { font-size: 36px; }
+      .store-badge { padding: 0 18px; }
+    }
   </style>
 </head>
 <body>

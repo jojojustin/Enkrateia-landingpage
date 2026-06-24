@@ -4,8 +4,14 @@
   */
   const WAITLIST_ENDPOINT = 'https://jtlhhomzkfiufyoitpfg.functions.supabase.co/waitlist-signup';
   const ANALYTICS = {
+    // 1. PostHog: paste your Project API key (starts with "phc_").
+    //    Find it in PostHog -> Settings -> Project -> Project API Key.
     posthogKey: '',
-    posthogHost: 'https://app.posthog.com',
+    //    Match this to your project's region: US cloud = https://us.i.posthog.com,
+    //    EU cloud = https://eu.i.posthog.com (shown next to the key in Settings).
+    posthogHost: 'https://us.i.posthog.com',
+    // 2. Google Analytics 4: paste your Measurement ID (starts with "G-").
+    //    Find it in GA4 -> Admin -> Data streams -> your web stream.
     gaMeasurementId: '',
   };
   const ANALYTICS_CONSENT_KEY = 'enkrateia_analytics_consent_v1';
@@ -151,3 +157,19 @@
   }
   bind('wl1','wl1-e','wl1-ok','wl1-company','wl1-msg');
   bind('wl2','wl2-e','wl2-ok','wl2-company','wl2-msg');
+
+  /* Track pre-order intent — fires to whichever analytics the visitor allowed.
+     No-ops safely until consent is given and the keys above are set. */
+  function track(event, props) {
+    if (window.posthog) window.posthog.capture(event, props);
+    if (window.gtag)    window.gtag('event', event, props);
+  }
+  document.querySelectorAll('a[href*="apps.apple.com"]').forEach((el) => {
+    el.addEventListener('click', () => {
+      let location = 'other';
+      if (el.classList.contains('nav-store')) location = 'nav';
+      else if (el.closest('.hero'))           location = 'hero';
+      else                                     location = 'footer';
+      track('preorder_click', { location });
+    });
+  });
